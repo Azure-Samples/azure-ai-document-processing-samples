@@ -94,6 +94,53 @@ class Invoice(BaseModel):
     def empty_json():
         return json.dumps(Invoice.empty().to_dict())
 
+    @staticmethod
+    def from_json(json_str: str):
+        json_content = json.loads(json_str)
+
+        def create_invoice_product(product):
+            return InvoiceProduct(
+                id=product.get('id', None),
+                description=product.get('description', None),
+                unit_price=product.get('unit_price', None),
+                quantity=product.get('quantity', None),
+                total=product.get('total', None),
+                reason=product.get('reason', None)
+            )
+
+        def create_invoice_signature(signature):
+            return InvoiceSignature(
+                type=signature.get('type', None),
+                name=signature.get('name', None),
+                is_signed=signature.get('is_signed', None)
+            )
+
+        invoice_products = [create_invoice_product(
+            product) for product in json_content.get('products', [])]
+        invoice_returns = [create_invoice_product(
+            return_product) for return_product in json_content.get('returns', [])]
+        invoice_product_signatures = [create_invoice_signature(
+            signature) for signature in json_content.get('product_signatures', [])]
+        invoice_return_signatures = [create_invoice_signature(
+            signature) for signature in json_content.get('returns_signatures', [])]
+
+        return Invoice(
+            invoice_number=json_content.get('invoice_number', None),
+            purchase_order_number=json_content.get(
+                'purchase_order_number', None),
+            customer_name=json_content.get('customer_name', None),
+            customer_address=json_content.get('customer_address', None),
+            delivery_date=json_content.get('delivery_date', None),
+            payable_by=json_content.get('payable_by', None),
+            products=invoice_products,
+            returns=invoice_returns,
+            total_product_quantity=json_content.get(
+                'total_product_quantity', None),
+            total_product_price=json_content.get('total_product_price', None),
+            product_signatures=invoice_product_signatures,
+            returns_signatures=invoice_return_signatures
+        )
+
     def to_dict(self):
         def to_list(items, expected_type):
             return [item.to_dict() for item in items if isinstance(item, expected_type)]
