@@ -14,6 +14,8 @@ The techniques demonstrated take advance of various capabilities from each servi
 
 - [Samples](#samples)
 - [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Samples
 
