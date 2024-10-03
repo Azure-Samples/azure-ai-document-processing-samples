@@ -1,0 +1,66 @@
+{
+    "name": "Azure AI Document Processing Samples",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/powershell:1": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/azure/azure-dev/azd:0": {},
+        "ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "8.0"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "22",
+            "additionalVersions": "20"
+        },
+        "ghcr.io/devcontainers/features/git-lfs:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/github-cli:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest"
+        }
+    },
+    "overrideFeatureInstallOrder": [
+        "ghcr.io/devcontainers/features/git",
+        "ghcr.io/devcontainers/features/powershell",
+        "ghcr.io/devcontainers/features/azure-cli",
+        "ghcr.io/azure/azure-dev/azd",
+        "ghcr.io/devcontainers/features/dotnet",
+        "ghcr.io/devcontainers/features/node",
+        "ghcr.io/devcontainers/features/git-lfs",
+        "ghcr.io/devcontainers/features/github-cli",
+        "ghcr.io/devcontainers/features/docker-in-docker"
+    ],
+    "remoteUser": "vscode",
+    "containerUser": "vscode",
+    "forwardPorts": [],
+    "otherPortsAttributes": {
+        "onAutoForward": "ignore"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ms-toolsai.jupyter",
+                "ms-azuretools.vscode-bicep",
+                "ms-vscode.vscode-node-azure-pack",
+                "ms-vscode.powershell",
+                "ms-dotnettools.csdevkit",
+                "GitHub.vscode-pull-request-github",
+                "ms-dotnettools.dotnet-interactive-vscode"
+            ]
+        }
+    },
+    "postCreateCommand": "pip3 --disable-pip-version-check install --user -r requirements.txt"
+}
