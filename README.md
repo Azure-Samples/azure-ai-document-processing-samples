@@ -1,3 +1,16 @@
+---
+page_type: sample
+languages:
+- python
+- bicep
+products:
+- azure
+- ai-services
+- azure-openai
+name: Document Processing with Azure AI Samples
+description: This collection of samples demonstrates how to use various Azure AI capabilities to build solution to extract structured data, classify, and analyze documents.
+---
+
 # Document Processing with Azure AI Samples
 
 This repository contains a collection of code samples that demonstrate how to use various Azure AI capabilities to process documents.
