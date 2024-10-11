@@ -60,4 +60,5 @@ The following Python dependencies are included in the devcontainer:
 - **python-dotenv** - To load environment variables from a `.env` file.
 - **seaborn** - To create plots in Jupyter notebooks.
 - **surya-ocr** - To extract text from images.
+- **tiktoken** - To calculate confidence scores for structured outputs using OpenAI's logprobs.
 - **transformers** - To interact with the Hugging Face Transformers library.
