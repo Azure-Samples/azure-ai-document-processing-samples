@@ -20,7 +20,7 @@ The samples are intended to help engineering teams establish techniques with Azu
 The techniques demonstrated take advance of various capabilities from each service to:
 
 - **Reduce complexity of custom model training** by taking advantage of the capabilities of Generative AI models to analyze and classify documents.
-- **Improve accuracy in document processing** by utilizing natural language processing and vision capabilities to extract structured data from documents.
+- **Improve reliability in document processing** by utilizing combining AI service capbilities to extract structured data from any document type, with high accuracy and confidence.
 - **Simplify document processing workflows** by providing reusable code and patterns that can be easily modified and evaluated for most use cases.
 
 ## Contents
@@ -32,12 +32,16 @@ The techniques demonstrated take advance of various capabilities from each servi
 
 ## Samples
 
+> [!NOTE]
+> All data extraction samples provide both an accuracy and confidence score for the extracted data. The accuracy score is calculated based on the similarity between the extracted data and the ground truth data. The confidence score is calculated based on OCR analysis confidence and `logprobs` in Azure OpenAI requests.
+
 | Sample                                                                                             | Description                                                                                                                                    | Example Use Cases                                                         |
 | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | [Data Extraction - Azure AI Document Intelligence + Azure OpenAI GPT-4o](./samples/extraction/text-based/document-intelligence-openai.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Azure OpenAI GPT models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
 | [Data Extraction - Azure AI Document Intelligence + Phi-3.5-mini](./samples/extraction/text-based/document-intelligence-phi.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Microsoft's Phi-3.5-mini models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
 | [Data Extraction - Marker/Surya + Azure OpenAI GPT-4o](./samples/extraction/text-based/marker-surya-openai.ipynb) | Demonstrates how to use Marker/Surya and Azure OpenAI GPT models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
 | [Data Extraction - Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/openai.ipynb) | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to extract structured data from documents using their built-in vision capabilities. | Complex documents with a mix of text and images, including diagrams, signatures, selection marks, etc. such as reports and contracts. |
+| [Data Extraction - Comprehensive Azure AI Document Intelligence + Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/comprehensive.ipynb) | Demonstrates how to improve the accuracy and confidence in extracting structured data from documents by combining Azure AI Document Intelligence and Azure OpenAI GPT-4o models with vision capabilities. | Any structured or unstructured document type. |
 | [Classification - Azure OpenAI GPT-4o with Vision](./samples/classification/openai.ipynb) | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to classify documents using their built-in vision capabilities. | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
 | [Classification - Azure AI Document Intelligence + Embeddings](./samples/classification/document-intelligence-embeddings.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and embeddings models to classify documents based on their content. | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
 
