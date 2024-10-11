@@ -2,16 +2,40 @@ from __future__ import annotations
 from datetime import datetime
 import json
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class InvoiceSignature(BaseModel):
-    type: Optional[str]
-    name: Optional[str]
-    is_signed: Optional[bool]
+    """
+    A class representing a signature for an invoice.
+
+    Attributes:
+        type: Type of signature.
+        name: Name of the person who signed the invoice.
+        is_signed: Indicates if the invoice is signed.
+    """
+
+    type: Optional[str] = Field(
+        description='Type of signature, e.g., Recipient, Customer, Driver'
+    )
+    name: Optional[str] = Field(
+        description='Name of the person who signed the invoice'
+    )
+    is_signed: Optional[bool] = Field(
+        description='Indicates if the invoice is signed'
+    )
 
     @staticmethod
-    def empty(type=''):
+    def example(type=''):
+        """
+        Creates an empty example InvoiceSignature object.
+
+        Args:
+            type: The type of the signature.
+
+        Returns:
+            InvoiceSignature: An empty InvoiceSignature object
+        """
         return InvoiceSignature(
             type=type,
             name='',
@@ -19,6 +43,13 @@ class InvoiceSignature(BaseModel):
         )
 
     def to_dict(self):
+        """
+        Converts the InvoiceSignature object to a dictionary.
+
+        Returns:
+            dict: The InvoiceSignature object as a dictionary.
+        """
+
         return {
             'type': self.type,
             'name': self.name,
@@ -27,15 +58,45 @@ class InvoiceSignature(BaseModel):
 
 
 class InvoiceProduct(BaseModel):
-    id: Optional[str]
-    description: Optional[str]
-    unit_price: Optional[float]
-    quantity: Optional[float]
-    total: Optional[float]
-    reason: Optional[str]
+    """
+    A class representing a product item in an invoice.
+
+    Attributes:
+        id: Identifier of the product.
+        description: Description of the product.
+        unit_price: Unit price of the product.
+        quantity: Quantity of the product.
+        total: Total price of the product.
+        reason: Reason for returning the product.
+    """
+
+    id: Optional[str] = Field(
+        description='Identifier of the product'
+    )
+    description: Optional[str] = Field(
+        description='Description of the product',
+    )
+    unit_price: Optional[float] = Field(
+        description='Unit price of the product'
+    )
+    quantity: Optional[int] = Field(
+        description='Quantity of the product'
+    )
+    total: Optional[float] = Field(
+        description='Total price of the product'
+    )
+    reason: Optional[str] = Field(
+        description='Reason for returning the product'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Creates an empty example InvoiceProduct object.
+
+        Returns:
+            InvoiceProduct: An empty InvoiceProduct object.
+        """
         return InvoiceProduct(
             id='',
             description='',
@@ -46,6 +107,13 @@ class InvoiceProduct(BaseModel):
         )
 
     def to_dict(self):
+        """
+        Converts the InvoiceProduct object to a dictionary.
+
+        Returns:
+            dict: The InvoiceProduct object as a dictionary.
+        """
+
         return {
             'id': self.id,
             'description': self.description,
@@ -57,21 +125,70 @@ class InvoiceProduct(BaseModel):
 
 
 class Invoice(BaseModel):
-    invoice_number: Optional[str]
-    purchase_order_number: Optional[str]
-    customer_name: Optional[str]
-    customer_address: Optional[str]
-    delivery_date: Optional[str]
-    payable_by: Optional[str]
-    products: Optional[list[InvoiceProduct]]
-    returns: Optional[list[InvoiceProduct]]
-    total_product_quantity: Optional[float]
-    total_product_price: Optional[float]
-    product_signatures: Optional[list[InvoiceSignature]]
-    returns_signatures: Optional[list[InvoiceSignature]]
+    """
+    A class representing an invoice.
+
+    Attributes:
+        invoice_number: Invoice number.
+        purchase_order_number: Purchase order number.
+        customer_name: Name of the customer/company.
+        customer_address: Full address of the customer/company.
+        delivery_date: Date of delivery.
+        payable_by: Date when the invoice should be paid.
+        products: List of products in the invoice.
+        returns: List of products returned in the invoice.
+        total_product_quantity: Total quantity of products in the invoice.
+        total_product_price: Total price of products in the invoice.
+        product_signatures: List of signatures for the products in the invoice.
+        returns_signatures: List of signatures for the returned products in the invoice.
+    """
+
+    invoice_number: Optional[str] = Field(
+        description='Invoice number'
+    )
+    purchase_order_number: Optional[str] = Field(
+        description='Purchase order number'
+    )
+    customer_name: Optional[str] = Field(
+        description='Name of the customer/company, e.g. Company A'
+    )
+    customer_address: Optional[str] = Field(
+        description='Full address of the customer/company, e.g. 123 Main St., City, Country'
+    )
+    delivery_date: Optional[str] = Field(
+        description='Date of delivery, e.g., 2021-01-01'
+    )
+    payable_by: Optional[str] = Field(
+        description='Date when the invoice should be paid, e.g., 2021-01-15'
+    )
+    products: Optional[list[InvoiceProduct]] = Field(
+        description='List of products in the invoice'
+    )
+    returns: Optional[list[InvoiceProduct]] = Field(
+        description='List of products returned in the invoice'
+    )
+    total_product_quantity: Optional[float] = Field(
+        description='Total quantity of products in the invoice'
+    )
+    total_product_price: Optional[float] = Field(
+        description='Total price of products in the invoice'
+    )
+    product_signatures: Optional[list[InvoiceSignature]] = Field(
+        description='List of signatures for the products in the invoice'
+    )
+    returns_signatures: Optional[list[InvoiceSignature]] = Field(
+        description='List of signatures for the returned products in the invoice'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Creates an empty example Invoice object.
+
+        Returns:
+            Invoice: An empty Invoice object.
+        """
+
         return Invoice(
             invoice_number='',
             purchase_order_number='',
@@ -79,26 +196,42 @@ class Invoice(BaseModel):
             customer_address='',
             delivery_date=datetime.now().strftime('%Y-%m-%d'),
             payable_by=datetime.now().strftime('%Y-%m-%d'),
-            products=[InvoiceProduct.empty()],
-            returns=[InvoiceProduct.empty()],
+            products=[InvoiceProduct.example()],
+            returns=[InvoiceProduct.example()],
             total_product_quantity=0.0,
             total_product_price=0.0,
             product_signatures=[
-                InvoiceSignature.empty('Customer'),
-                InvoiceSignature.empty('Driver')
+                InvoiceSignature.example('Customer'),
+                InvoiceSignature.example('Driver')
             ],
-            returns_signatures=[InvoiceSignature.empty()]
+            returns_signatures=[InvoiceSignature.example()]
         )
 
     @staticmethod
-    def empty_json():
-        return json.dumps(Invoice.empty().to_dict())
-
-    @staticmethod
     def from_json(json_str: str):
+        """
+        Creates an Invoice object from a JSON string.
+
+        Args:
+            json_str: The JSON string representing the Invoice object.
+
+        Returns:
+            Invoice: An Invoice object.
+        """
+
         json_content = json.loads(json_str)
 
         def create_invoice_product(product):
+            """
+            Creates an InvoiceProduct object from a dictionary.
+
+            Args:
+                product: A dictionary representing an InvoiceProduct object.
+
+            Returns:
+                InvoiceProduct: An InvoiceProduct object.
+            """
+
             return InvoiceProduct(
                 id=product.get('id', None),
                 description=product.get('description', None),
@@ -109,6 +242,16 @@ class Invoice(BaseModel):
             )
 
         def create_invoice_signature(signature):
+            """
+            Creates an InvoiceSignature object from a dictionary.
+
+            Args:
+                signature: A dictionary representing an InvoiceSignature object.
+
+            Returns:
+                InvoiceSignature: An InvoiceSignature object.
+            """
+
             return InvoiceSignature(
                 type=signature.get('type', None),
                 name=signature.get('name', None),
@@ -142,6 +285,13 @@ class Invoice(BaseModel):
         )
 
     def to_dict(self):
+        """
+        Converts the Invoice object to a dictionary.
+
+        Returns:
+            dict: The Invoice object as a dictionary.
+        """
+
         def to_list(items, expected_type):
             return [item.to_dict() for item in items if isinstance(item, expected_type)]
 
@@ -169,11 +319,46 @@ class Invoice(BaseModel):
 
 
 class InvoiceEvaluator:
+    """
+    A class to evaluate the accuracy of an extracted invoice against its expected gold standard.
+
+    Attributes:
+        expected (Invoice): The expected invoice.
+    """
+
     def __init__(self, expected: Invoice):
+        """
+        Initializes a new instance of the InvoiceEvaluator class.
+
+        Args:
+            expected: The expected invoice to compare against.
+        """
+
         self.expected = expected
 
     def evaluate(self, actual: Optional[Invoice]):
+        """
+        Evaluates the accuracy of the extracted invoice against the expected invoice by comparing their attributes.
+
+        Args:
+            actual: The extracted invoice to evaluate.
+
+        Returns:
+            dict: A dictionary containing the accuracy of the extracted invoice by attribute.
+        """
+
         def compare_product(expected_product: InvoiceProduct, actual_product: Optional[InvoiceProduct]):
+            """
+            Compares the accuracy of an expected product against an actual product including the overall accuracy.
+
+            Args:
+                expected_product: The expected product.
+                actual_product: The actual product.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the product by attribute.
+            """
+
             product_accuracy = {
                 'id': 0,
                 'description': 0,
@@ -202,6 +387,17 @@ class InvoiceEvaluator:
             return product_accuracy
 
         def compare_signature(expected_signature: InvoiceSignature, actual_signature: Optional[InvoiceSignature]):
+            """
+            Compares the accuracy of an expected signature against an actual signature including the overall accuracy.
+
+            Args:
+                expected_signature: The expected signature.
+                actual_signature: The actual signature.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the signature by attribute
+            """
+
             signature_accuracy = {
                 'type': 0,
                 'name': 0,
