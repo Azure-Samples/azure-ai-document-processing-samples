@@ -2,21 +2,47 @@ from __future__ import annotations
 from datetime import datetime
 import json
 from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class VehicleInsuranceCostDetails(BaseModel):
-    annual_total: Optional[float]
-    payable_by_date: Optional[str]
+    """
+    A class representing the cost details of a vehicle insurance policy.
+
+    Attributes:
+        annual_total: The annual total cost of the vehicle insurance policy.
+        payable_by_date: The date by which the vehicle insurance policy must be paid.
+    """
+
+    annual_total: Optional[float] = Field(
+        description='The annual total cost of the vehicle insurance policy.'
+    )
+    payable_by_date: Optional[str] = Field(
+        description='The date by which the vehicle insurance policy must be paid.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsuranceCostDetails object with default values.
+
+        Returns:
+            VehicleInsuranceCostDetails: An empty VehicleInsuranceCostDetails object.
+        """
+
         return VehicleInsuranceCostDetails(
             annual_total=0,
             payable_by_date=datetime.now().strftime('%Y-%m-%d')
         )
 
     def to_dict(self):
+        """
+        Converts the VehicleInsuranceCostDetails object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsuranceCostDetails object as a dictionary.
+        """
+
         return {
             "annual_total": self.annual_total,
             "payable_by_date": self.payable_by_date
@@ -24,17 +50,43 @@ class VehicleInsuranceCostDetails(BaseModel):
 
 
 class VehicleInsuranceRenewalDetails(BaseModel):
-    renewal_notification_date: Optional[str]
-    renewal_due_date: Optional[str]
+    """
+    A class representing the renewal details of a vehicle insurance policy.
+
+    Attributes:
+        renewal_notification_date: The date on which the renewal notification is sent.
+        renewal_due_date: The date on which the renewal is due.
+    """
+
+    renewal_notification_date: Optional[str] = Field(
+        description='The date on which the renewal notification is sent.'
+    )
+    renewal_due_date: Optional[str] = Field(
+        description='The date on which the renewal is due.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsuranceRenewalDetails object with default values.
+
+        Returns:
+            VehicleInsuranceRenewalDetails: An empty VehicleInsuranceRenewalDetails object.
+        """
+
         return VehicleInsuranceRenewalDetails(
             renewal_notification_date=datetime.now().strftime('%Y-%m-%d'),
             renewal_due_date=datetime.now().strftime('%Y-%m-%d')
         )
 
     def to_dict(self):
+        """
+        Converts the VehicleInsuranceRenewalDetails object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsuranceRenewalDetails object as a dictionary.
+        """
+
         return {
             "renewal_notification_date": self.renewal_notification_date,
             "renewal_due_date": self.renewal_due_date
@@ -42,16 +94,50 @@ class VehicleInsuranceRenewalDetails(BaseModel):
 
 
 class VehicleInsurancePersonDetails(BaseModel):
-    first_name: Optional[str]
-    last_name: Optional[str]
-    date_of_birth: Optional[str]
-    address: Optional[str]
-    email_address: Optional[str]
-    total_years_of_residence_in_uk: Optional[int]
-    driving_license_number: Optional[str]
+    """
+    A class representing the person details of a vehicle insurance policy.
+
+    Attributes:
+        first_name: The first name of the person.
+        last_name: The last name of the person.
+        date_of_birth: The date of birth of the person.
+        address: The current address of the person.
+        email_address: The email address of the person.
+        total_years_of_residence_in_uk: The total years the person has resided in the UK.
+        driving_license_number: The driving license number of the person.
+    """
+
+    first_name: Optional[str] = Field(
+        description='The first name of the person.'
+    )
+    last_name: Optional[str] = Field(
+        description='The last name or surname of the person.'
+    )
+    date_of_birth: Optional[str] = Field(
+        description='The date of birth of the person.'
+    )
+    address: Optional[str] = Field(
+        description='The current address of the person.'
+    )
+    email_address: Optional[str] = Field(
+        description='The email address of the person.'
+    )
+    total_years_of_residence_in_uk: Optional[int] = Field(
+        description='The total years the person has resided in the UK.'
+    )
+    driving_license_number: Optional[str] = Field(
+        description='The driving license number of the person.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsurancePersonDetails object with default values.
+
+        Returns:
+            VehicleInsurancePersonDetails: An empty VehicleInsurancePersonDetails object.
+        """
+
         return VehicleInsurancePersonDetails(
             first_name='',
             last_name='',
@@ -63,6 +149,13 @@ class VehicleInsurancePersonDetails(BaseModel):
         )
 
     def to_dict(self):
+        """
+        Converts the VehicleInsurancePersonDetails object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsurancePersonDetails object as a dictionary.
+        """
+
         return {
             "first_name": self.first_name,
             "last_name": self.last_name,
@@ -75,14 +168,42 @@ class VehicleInsurancePersonDetails(BaseModel):
 
 
 class VehicleInsuranceVehicleDetails(BaseModel):
-    registration_number: Optional[str]
-    make: Optional[str]
-    model: Optional[str]
-    year: Optional[int]
-    value: Optional[float]
+    """
+    A class representing the vehicle details of a vehicle insurance policy.
+
+    Attributes:
+        registration_number: The registration number of the vehicle.
+        make: The make of the vehicle.
+        model: The model of the vehicle.
+        year: The year the vehicle was manufactured.
+        value: The current value of the vehicle.
+    """
+
+    registration_number: Optional[str] = Field(
+        description='The registration number of the vehicle.'
+    )
+    make: Optional[str] = Field(
+        description='The make of the vehicle.'
+    )
+    model: Optional[str] = Field(
+        description='The model of the vehicle.'
+    )
+    year: Optional[int] = Field(
+        description='The year the vehicle was manufactured.'
+    )
+    value: Optional[float] = Field(
+        description='The current value of the vehicle.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsuranceVehicleDetails object with default values.
+
+        Returns:
+            VehicleInsuranceVehicleDetails: An empty VehicleInsuranceVehicleDetails object.
+        """
+
         return VehicleInsuranceVehicleDetails(
             registration_number='',
             make='',
@@ -92,6 +213,13 @@ class VehicleInsuranceVehicleDetails(BaseModel):
         )
 
     def to_dict(self):
+        """
+        Converts the VehicleInsuranceVehicleDetails object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsuranceVehicleDetails object as a dictionary.
+        """
+
         return {
             "registration_number": self.registration_number,
             "make": self.make,
@@ -102,19 +230,48 @@ class VehicleInsuranceVehicleDetails(BaseModel):
 
 
 class VehicleInsuranceExcessDetails(BaseModel):
-    compulsory: Optional[float]
-    voluntary: Optional[float]
-    unapproved_repair_penalty: Optional[float]
+    """
+    A class representing the excess details of a vehicle insurance policy.
+
+    Attributes:
+        compulsory: The compulsory excess amount.
+        voluntary: The voluntary excess amount.
+        unapproved_repair_penalty: The penalty amount for repairs by unapproved repairers.
+    """
+
+    compulsory: Optional[int] = Field(
+        description='The compulsory excess amount.'
+    )
+    voluntary: Optional[int] = Field(
+        description='The voluntary excess amount.'
+    )
+    unapproved_repair_penalty: Optional[int] = Field(
+        description='The penalty amount for repairs by unapproved repairers.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsuranceExcessDetails object with default values.
+
+        Returns:
+            VehicleInsuranceExcessDetails: An empty VehicleInsuranceExcessDetails object.
+        """
+
         return VehicleInsuranceExcessDetails(
-            compulsory=0.0,
-            voluntary=0.0,
-            unapproved_repair_penalty=0.0
+            compulsory=0,
+            voluntary=0,
+            unapproved_repair_penalty=0
         )
 
     def to_dict(self):
+        """
+        Converts the VehicleInsuranceExcessDetails object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsuranceExcessDetails object as a dictionary.
+        """
+
         return {
             "compulsory": self.compulsory,
             "voluntary": self.voluntary,
@@ -123,38 +280,87 @@ class VehicleInsuranceExcessDetails(BaseModel):
 
 
 class VehicleInsurancePolicy(BaseModel):
-    policy_number: Optional[str]
-    cost: Optional[VehicleInsuranceCostDetails]
-    renewal: Optional[VehicleInsuranceRenewalDetails]
-    effective_from: Optional[str]
-    effective_to: Optional[str]
-    last_date_to_cancel: Optional[str]
-    policyholder: Optional[VehicleInsurancePersonDetails]
-    vehicle: Optional[VehicleInsuranceVehicleDetails]
-    accident_excess: Optional[VehicleInsuranceExcessDetails]
-    fire_and_theft_excess: Optional[VehicleInsuranceExcessDetails]
+    """
+    A class representing a vehicle insurance policy.
+
+    Attributes:
+        policy_number: The policy number of the vehicle insurance policy.
+        cost: The cost details of the vehicle insurance policy.
+        renewal: The renewal details of the vehicle insurance policy.
+        effective_from: The effective date from which the vehicle insurance policy is valid.
+        effective_to: The effective date to which the vehicle insurance policy is valid.
+        last_date_to_cancel: The last date to cancel the vehicle insurance policy.
+        policyholder: The person details of the policyholder.
+        vehicle: The vehicle details of the policy.
+        accident_excess: The excess costs for accidents.
+        fire_and_theft_excess: The excess costs for fire and theft.
+    """
+
+    policy_number: Optional[str] = Field(
+        description='The policy number of the vehicle insurance policy.'
+    )
+    cost: Optional[VehicleInsuranceCostDetails] = Field(
+        description='The cost details of the vehicle insurance policy.'
+    )
+    renewal: Optional[VehicleInsuranceRenewalDetails] = Field(
+        description='The renewal details of the vehicle insurance policy.'
+    )
+    effective_from: Optional[str] = Field(
+        description='The effective date from which the vehicle insurance policy is valid.'
+    )
+    effective_to: Optional[str] = Field(
+        description='The effective date to which the vehicle insurance policy is valid.'
+    )
+    last_date_to_cancel: Optional[str] = Field(
+        description='The last date to cancel the vehicle insurance policy.'
+    )
+    policyholder: Optional[VehicleInsurancePersonDetails] = Field(
+        description='The person details of the policyholder.'
+    )
+    vehicle: Optional[VehicleInsuranceVehicleDetails] = Field(
+        description='The vehicle details of the policy.'
+    )
+    accident_excess: Optional[VehicleInsuranceExcessDetails] = Field(
+        description='The excess costs for accidents.'
+    )
+    fire_and_theft_excess: Optional[VehicleInsuranceExcessDetails] = Field(
+        description='The excess costs for fire and theft.'
+    )
 
     @staticmethod
-    def empty():
+    def example():
+        """
+        Returns an empty example VehicleInsurancePolicy object with default values.
+
+        Returns:
+            VehicleInsurancePolicy: An empty VehicleInsurancePolicy object.
+        """
+
         return VehicleInsurancePolicy(
             policy_number='',
-            cost=VehicleInsuranceCostDetails.empty(),
-            renewal=VehicleInsuranceRenewalDetails.empty(),
+            cost=VehicleInsuranceCostDetails.example(),
+            renewal=VehicleInsuranceRenewalDetails.example(),
             effective_from=datetime.now().strftime('%Y-%m-%d'),
             effective_to=datetime.now().strftime('%Y-%m-%d'),
             last_date_to_cancel=datetime.now().strftime('%Y-%m-%d'),
-            policyholder=VehicleInsurancePersonDetails.empty(),
-            vehicle=VehicleInsuranceVehicleDetails.empty(),
-            accident_excess=VehicleInsuranceExcessDetails.empty(),
-            fire_and_theft_excess=VehicleInsuranceExcessDetails.empty()
+            policyholder=VehicleInsurancePersonDetails.example(),
+            vehicle=VehicleInsuranceVehicleDetails.example(),
+            accident_excess=VehicleInsuranceExcessDetails.example(),
+            fire_and_theft_excess=VehicleInsuranceExcessDetails.example()
         )
 
     @staticmethod
-    def empty_json():
-        return json.dumps(VehicleInsurancePolicy.empty().to_dict())
-
-    @staticmethod
     def from_json(json_str: str):
+        """
+        Converts a JSON string to a VehicleInsurancePolicy object.
+
+        Args:
+            json_str: The JSON string to convert.
+
+        Returns:
+            VehicleInsurancePolicy: The VehicleInsurancePolicy object.
+        """
+
         json_content = json.loads(json_str)
 
         policy_number = json_content.get("policy_number", None)
@@ -189,6 +395,13 @@ class VehicleInsurancePolicy(BaseModel):
         return VehicleInsurancePolicy(policy_number, cost, renewal, effective_from, effective_to, last_date_to_cancel, policyholder, vehicle, accident_excess, fire_and_theft_excess)
 
     def to_dict(self):
+        """
+        Converts the VehicleInsurancePolicy object to a dictionary.
+
+        Returns:
+            dict: The VehicleInsurancePolicy object as a dictionary.
+        """
+
         return {
             "policy_number": self.policy_number,
             "cost": self.cost.to_dict(),
@@ -204,11 +417,46 @@ class VehicleInsurancePolicy(BaseModel):
 
 
 class VehicleInsurancePolicyEvaluator:
+    """
+    A class to evaluate the accuracy of an extracted vehicle insurance policy against its expected gold standard.
+
+    Attributes:
+        expected (VehicleInsurancePolicy): The expected vehicle insurance policy.
+    """
+
     def __init__(self, expected: VehicleInsurancePolicy):
+        """
+        Initializes a new instance of the VehicleInsurancePolicyEvaluator class.
+
+        Args:
+            expected (VehicleInsurancePolicy): The expected vehicle insurance policy to compare against.
+        """
+
         self.expected = expected
 
     def evaluate(self, actual: Optional[VehicleInsurancePolicy]):
+        """
+        Evaluates the accuracy of the extracted vehicle insurance policy against the expected vehicle insurance policy by comparing their attributes.
+
+        Args:
+            actual: The extracted vehicle insurance policy to evaluate.
+
+        Returns:
+            dict: A dictionary containing the accuracy of the extracted vehicle insurance policy by attribute.
+        """
+
         def compare_cost(expected_cost: VehicleInsuranceCostDetails, actual_cost: Optional[VehicleInsuranceCostDetails]):
+            """
+            Compares the accuracy of the cost details of the vehicle insurance policy.
+
+            Args:
+                expected_cost: The expected cost details of the vehicle insurance policy.
+                actual_cost: The actual cost details of the vehicle insurance policy.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the cost details by attribute.
+            """
+
             cost_accuracy = {
                 "annual_total": 0,
                 "payable_by_date": 0,
@@ -227,6 +475,17 @@ class VehicleInsurancePolicyEvaluator:
             return cost_accuracy
 
         def compare_renewal(expected_renewal: VehicleInsuranceRenewalDetails, actual_renewal: Optional[VehicleInsuranceRenewalDetails]):
+            """
+            Compares the accuracy of the renewal details of the vehicle insurance policy.
+
+            Args:
+                expected_renewal: The expected renewal details of the vehicle insurance policy.
+                actual_renewal: The actual renewal details of the vehicle insurance policy.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the renewal details by attribute.
+            """
+
             renewal_accuracy = {
                 "renewal_notification_date": 0,
                 "renewal_due_date": 0,
@@ -246,6 +505,17 @@ class VehicleInsurancePolicyEvaluator:
             return renewal_accuracy
 
         def compare_person(expected_person: VehicleInsurancePersonDetails, actual_person: Optional[VehicleInsurancePersonDetails]):
+            """
+            Compares the accuracy of the person details of the vehicle insurance policy.
+
+            Args:
+                expected_person: The expected person details of the vehicle insurance policy.
+                actual_person: The actual person details of the vehicle insurance policy.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the person details by attribute.
+            """
+
             person_accuracy = {
                 "first_name": 0,
                 "last_name": 0,
@@ -278,6 +548,17 @@ class VehicleInsurancePolicyEvaluator:
             return person_accuracy
 
         def compare_vehicle(expected_vehicle: VehicleInsuranceVehicleDetails, actual_vehicle: Optional[VehicleInsuranceVehicleDetails]):
+            """
+            Compares the accuracy of the vehicle details of the vehicle insurance policy.
+
+            Args:
+                expected_vehicle: The expected vehicle details of the vehicle insurance policy.
+                actual_vehicle: The actual vehicle details of the vehicle insurance policy.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the vehicle details by attribute.
+            """
+
             vehicle_accuracy = {
                 "registration_number": 0,
                 "make": 0,
@@ -303,6 +584,17 @@ class VehicleInsurancePolicyEvaluator:
             return vehicle_accuracy
 
         def compare_excess(expected_excess: VehicleInsuranceExcessDetails, actual_excess: Optional[VehicleInsuranceExcessDetails]):
+            """
+            Compares the accuracy of the excess details of the vehicle insurance policy.
+
+            Args:
+                expected_excess: The expected excess details of the vehicle insurance policy.
+                actual_excess: The actual excess details of the vehicle insurance policy.
+
+            Returns:
+                dict: A dictionary containing the accuracy of the excess details by attribute
+            """
+
             excess_accuracy = {
                 "compulsory": 0,
                 "voluntary": 0,
