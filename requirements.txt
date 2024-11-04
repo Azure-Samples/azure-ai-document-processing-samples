@@ -5,7 +5,7 @@ azure-storage-blob==12.23.1
 ipycanvas==0.13.3
 ipykernel==6.29.5
 jupyter-bbox-widget==0.6.0
-marker-pdf==0.2.17
+marker-pdf==0.3.10
 matplotlib==3.9.2
 notebook==7.2.2
 numpy
