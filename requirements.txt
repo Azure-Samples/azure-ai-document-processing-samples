@@ -9,7 +9,7 @@ marker-pdf==0.3.10
 matplotlib==3.9.2
 notebook==7.2.2
 numpy
-openai==1.53.0
+openai==1.53.1
 opencv-python==4.10.0.84
 openpyxl==3.1.5
 pandas==2.2.3
