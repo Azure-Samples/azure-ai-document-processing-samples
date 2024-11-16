@@ -60,10 +60,10 @@ $AIServicesEndpoint = $InfrastructureOutputs.aiModelsInfo.value.aiServicesEndpoi
 $OpenAIEndpoint = $InfrastructureOutputs.aiModelsInfo.value.openAIEndpoint
 $Gpt4oModelDeploymentName = $InfrastructureOutputs.aiModelsInfo.value.gpt4oModelDeploymentName
 $TextEmbeddingModelDeploymentName = $InfrastructureOutputs.aiModelsInfo.value.textEmbeddingModelDeploymentName
-$Phi35MiniEndpoint = $InfrastructureOutputs.aiModelsInfo.value.phi35MiniEndpoint
+$Phi3Endpoint = $InfrastructureOutputs.aiModelsInfo.value.phi3Endpoint
 
-$Phi35MiniPrimaryKeySecretName = $InfrastructureOutputs.aiModelsInfo.value.phi35MiniPrimaryKeySecretName
-$Phi35MiniPrimaryKey = (az keyvault secret show --vault-name $KeyVaultName --name $Phi35MiniPrimaryKeySecretName --query value -o tsv)
+$Phi3PrimaryKeySecretName = $InfrastructureOutputs.aiModelsInfo.value.phi3PrimaryKeySecretName
+$Phi3PrimaryKey = (az keyvault secret show --vault-name $KeyVaultName --name $Phi3PrimaryKeySecretName --query value -o tsv)
 
 Write-Host "Updating local settings..."
 
@@ -76,5 +76,5 @@ Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableNam
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'OPENAI_ENDPOINT' -variableValue $OpenAIEndpoint
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'GPT4O_MODEL_DEPLOYMENT_NAME' -variableValue $Gpt4oModelDeploymentName
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'TEXT_EMBEDDING_MODEL_DEPLOYMENT_NAME' -variableValue $TextEmbeddingModelDeploymentName
-Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI35_MINI_ENDPOINT' -variableValue $Phi35MiniEndpoint
-Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI35_MINI_PRIMARY_KEY' -variableValue $Phi35MiniPrimaryKey
+Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI3_ENDPOINT' -variableValue $Phi3Endpoint
+Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI3_PRIMARY_KEY' -variableValue $Phi3PrimaryKey
