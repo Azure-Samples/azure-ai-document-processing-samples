@@ -48,7 +48,7 @@ def highlight_comparison(actual_value, expected_value):
     elif isinstance(actual_value, list) and isinstance(expected_value, list):
         return [highlight_comparison(v, ev) for v, ev in zip(actual_value, expected_value)]
     else:
-        if isinstance(actual_value, str) and actual_value.lower() == expected_value.lower():
+        if isinstance(actual_value, str) and isinstance(expected_value, str) and actual_value.lower() == expected_value.lower():
             return f"<span style='color: green'>{actual_value}</span>"
         elif actual_value == expected_value:
             return f"<span style='color: green'>{actual_value}</span>"

@@ -1,6 +1,7 @@
 {
   "serverless": {
     "Phi-35-mini-instruct": "azureml://registries/azureml/models/Phi-3.5-mini-instruct",
+    "Phi-35-moe-instruct": "azureml://registries/azureml/models/Phi-3.5-MoE-instruct",
     "Phi-3-small-8k-instruct": "azureml://registries/azureml/models/Phi-3-small-8k-instruct",
     "Phi-3-small-128k-instruct": "azureml://registries/azureml/models/Phi-3-small-128k-instruct",
     "Phi-3-mini-4k-instruct": "azureml://registries/azureml/models/Phi-3-mini-4k-instruct",
