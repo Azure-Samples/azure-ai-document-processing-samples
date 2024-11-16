@@ -1,0 +1,6 @@
+{
+    "id": "dev-tools",
+    "version": "0.1.0",
+    "name": "Azure AI Document Processing Samples Dev Tools",
+    "description": "Required tools for developing and running the Azure AI Document Processing samples"
+}
