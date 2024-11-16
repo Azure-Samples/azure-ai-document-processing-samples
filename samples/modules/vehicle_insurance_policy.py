@@ -55,14 +55,14 @@ class VehicleInsuranceRenewalDetails(BaseModel):
 
     Attributes:
         renewal_notification_date: The date on which the renewal notification is sent.
-        renewal_due_date: The date on which the renewal is due.
+        last_date_to_renew: The last date before renewal is required.
     """
 
     renewal_notification_date: Optional[str] = Field(
         description='The date on which the renewal notification is sent.'
     )
-    renewal_due_date: Optional[str] = Field(
-        description='The date on which the renewal is due.'
+    last_date_to_renew: Optional[str] = Field(
+        description='The last date before renewal is required.'
     )
 
     @staticmethod
@@ -76,7 +76,7 @@ class VehicleInsuranceRenewalDetails(BaseModel):
 
         return VehicleInsuranceRenewalDetails(
             renewal_notification_date=datetime.now().strftime('%Y-%m-%d'),
-            renewal_due_date=datetime.now().strftime('%Y-%m-%d')
+            last_date_to_renew=datetime.now().strftime('%Y-%m-%d')
         )
 
     def to_dict(self):
@@ -89,7 +89,7 @@ class VehicleInsuranceRenewalDetails(BaseModel):
 
         return {
             "renewal_notification_date": self.renewal_notification_date,
-            "renewal_due_date": self.renewal_due_date
+            "last_date_to_renew": self.last_date_to_renew
         }
 
 
@@ -378,7 +378,7 @@ class VehicleInsurancePolicy(BaseModel):
             cost.get("annual_total", None), cost.get("payable_by_date", None)) if cost is not None else None
 
         renewal = VehicleInsuranceRenewalDetails(
-            renewal.get("renewal_notification_date", None), renewal.get("renewal_due_date", None)) if renewal is not None else None
+            renewal.get("renewal_notification_date", None), renewal.get("last_date_to_renew", None)) if renewal is not None else None
 
         policyholder = VehicleInsurancePersonDetails(
             policyholder.get("first_name", None), policyholder.get("last_name", None), policyholder.get("date_of_birth", None), policyholder.get("address", None), policyholder.get("email_address", None), policyholder.get("total_years_of_residence_in_uk", None), policyholder.get("driving_license_number", None)) if policyholder is not None else None
@@ -488,7 +488,7 @@ class VehicleInsurancePolicyEvaluator:
 
             renewal_accuracy = {
                 "renewal_notification_date": 0,
-                "renewal_due_date": 0,
+                "last_date_to_renew": 0,
                 "overall": 0
             }
 
@@ -497,10 +497,10 @@ class VehicleInsurancePolicyEvaluator:
 
             renewal_accuracy["renewal_notification_date"] = 1 if (expected_renewal.renewal_notification_date or '').lower() == (
                 actual_renewal.renewal_notification_date or '').lower() else 0
-            renewal_accuracy["renewal_due_date"] = 1 if (expected_renewal.renewal_due_date or '').lower() == (
-                actual_renewal.renewal_due_date or '').lower() else 0
+            renewal_accuracy["last_date_to_renew"] = 1 if (expected_renewal.last_date_to_renew or '').lower() == (
+                actual_renewal.last_date_to_renew or '').lower() else 0
             renewal_accuracy["overall"] = (renewal_accuracy["renewal_notification_date"] +
-                                           renewal_accuracy["renewal_due_date"]) / 2
+                                           renewal_accuracy["last_date_to_renew"]) / 2
 
             return renewal_accuracy
 
