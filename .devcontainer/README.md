@@ -44,7 +44,6 @@ The following Python dependencies are included in the devcontainer:
 - **azure-storage-blob** - To interact with the Azure Blob Storage service.
 - **ipycanvas** - To create interactive canvases in Jupyter notebooks.
 - **ipykernel** - To create Jupyter kernels.
-- **jupyter-bbox-widget** - To create bounding box widgets in Jupyter notebooks.
 - **marker-pdf** - To extract text from PDF files as Markdown.
 - **matplotlib** - To create plots in Jupyter notebooks.
 - **notebook** - To create Jupyter notebooks.
@@ -55,7 +54,6 @@ The following Python dependencies are included in the devcontainer:
 - **pandas** - To work with data.
 - **pdf2image** - To convert PDF files to images.
 - **pydantic** - To work with data models.
-- **PyMuPDF** - To work with PDF files.
 - **pytesseract** - To extract text from images.
 - **python-dotenv** - To load environment variables from a `.env` file.
 - **seaborn** - To create plots in Jupyter notebooks.
