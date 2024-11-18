@@ -1,7 +1,7 @@
 azure-ai-documentintelligence==1.0.0b4
 azure-core==1.32.0
 azure-identity==1.19.0
-azure-storage-blob==12.23.1
+azure-storage-blob==12.24.0
 ipycanvas==0.13.3
 ipykernel==6.29.5
 marker-pdf==0.3.10
