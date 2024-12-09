@@ -5,7 +5,7 @@ azure-storage-blob==12.24.0
 ipycanvas==0.13.3
 ipykernel==6.29.5
 marker-pdf==0.3.10
-matplotlib==3.9.2
+matplotlib==3.9.3
 notebook==7.2.2
 numpy
 openai==1.54.4
