@@ -19,4 +19,4 @@ python-dotenv==1.0.1
 seaborn==0.13.2
 surya-ocr==0.6.13
 tiktoken==0.8.0
-transformers==4.46.2
+transformers==4.47.0
