@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "ms-python.vscode-pylance",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.vscode-bicep",
+        "ms-vscode.vscode-node-azure-pack",
+        "ms-vscode.powershell",
+        "GitHub.vscode-pull-request-github"
+    ]
+}
