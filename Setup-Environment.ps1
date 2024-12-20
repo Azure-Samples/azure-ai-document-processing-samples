@@ -68,6 +68,9 @@ $Phi3PrimaryKey = (az keyvault secret show --vault-name $KeyVaultName --name $Ph
 Write-Host "Updating local settings..."
 
 $ConfigurationFile = './.env'
+if (-not (Test-Path -Path $ConfigurationFile)) {
+    New-Item -Path $ConfigurationFile -ItemType File
+}
 
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'RESOURCE_GROUP_NAME' -variableValue $ResourceGroupName
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'MANAGED_IDENTITY_CLIENT_ID' -variableValue $ManagedIdentityClientId
