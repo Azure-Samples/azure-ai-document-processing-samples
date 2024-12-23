@@ -17,6 +17,6 @@ pydantic==2.9.2
 pytesseract==0.3.13
 python-dotenv==1.0.1
 seaborn==0.13.2
-surya-ocr==0.6.13
+surya-ocr==0.8.1
 tiktoken==0.8.0
 transformers==4.46.2
