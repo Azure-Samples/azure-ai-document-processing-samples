@@ -1,12 +1,12 @@
 ---
 page_type: sample
 languages:
-- python
-- bicep
+  - python
+  - bicep
 products:
-- azure
-- ai-services
-- azure-openai
+  - azure
+  - ai-services
+  - azure-openai
 name: Document Processing with Azure AI Samples
 description: This collection of samples demonstrates how to use various Azure AI capabilities to build solution to extract structured data, classify, and analyze documents.
 ---
@@ -27,6 +27,9 @@ The techniques demonstrated take advance of various capabilities from each servi
 
 - [Samples](#samples)
 - [Getting Started](#getting-started)
+  - [Setup on GitHub Codespaces](#setup-on-github-codespaces)
+  - [Setup on Local](#setup-on-local)
+  - [Deploy the Azure environment](#deploy-the-azure-environment)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -35,38 +38,53 @@ The techniques demonstrated take advance of various capabilities from each servi
 > [!NOTE]
 > All data extraction samples provide both an accuracy and confidence score for the extracted data. The accuracy score is calculated based on the similarity between the extracted data and the ground truth data. The confidence score is calculated based on OCR analysis confidence and `logprobs` in Azure OpenAI requests.
 
-| Sample                                                                                             | Description                                                                                                                                    | Example Use Cases                                                         |
-| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [Data Extraction - Azure AI Document Intelligence + Azure OpenAI GPT-4o](./samples/extraction/text-based/document-intelligence-openai.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Azure OpenAI GPT models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
-| [Data Extraction - Azure AI Document Intelligence + Phi-3.5 MoE](./samples/extraction/text-based/document-intelligence-phi.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Microsoft's Phi-3 models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
-| [Data Extraction - Marker/Surya + Azure OpenAI GPT-4o](./samples/extraction/text-based/marker-surya-openai.ipynb) | Demonstrates how to use Marker/Surya and Azure OpenAI GPT models to extract structured data from documents. | Predominantly text-based documents such as invoices, receipts, and forms. |
-| [Data Extraction - Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/openai.ipynb) | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to extract structured data from documents using their built-in vision capabilities. | Complex documents with a mix of text and images, including diagrams, signatures, selection marks, etc. such as reports and contracts. |
-| [Data Extraction - Comprehensive Azure AI Document Intelligence + Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/comprehensive.ipynb) | Demonstrates how to improve the accuracy and confidence in extracting structured data from documents by combining Azure AI Document Intelligence and Azure OpenAI GPT-4o models with vision capabilities. | Any structured or unstructured document type. |
-| [Classification - Azure OpenAI GPT-4o with Vision](./samples/classification/openai.ipynb) | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to classify documents using their built-in vision capabilities. | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
-| [Classification - Azure AI Document Intelligence + Embeddings](./samples/classification/document-intelligence-embeddings.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and embeddings models to classify documents based on their content. | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
+| Sample                                                                                                                                                    | Description                                                                                                                                                                                               | Example Use Cases                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| [Data Extraction - Azure AI Document Intelligence + Azure OpenAI GPT-4o](./samples/extraction/text-based/document-intelligence-openai.ipynb)              | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Azure OpenAI GPT models to extract structured data from documents.                                                            | Predominantly text-based documents such as invoices, receipts, and forms.                                                             |
+| [Data Extraction - Azure AI Document Intelligence + Phi-3.5 MoE](./samples/extraction/text-based/document-intelligence-phi.ipynb)                         | Demonstrates how to use Azure AI Document Intelligence pre-built layout and Microsoft's Phi-3 models to extract structured data from documents.                                                           | Predominantly text-based documents such as invoices, receipts, and forms.                                                             |
+| [Data Extraction - Marker/Surya + Azure OpenAI GPT-4o](./samples/extraction/text-based/marker-surya-openai.ipynb)                                         | Demonstrates how to use Marker/Surya and Azure OpenAI GPT models to extract structured data from documents.                                                                                               | Predominantly text-based documents such as invoices, receipts, and forms.                                                             |
+| [Data Extraction - Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/openai.ipynb)                                                       | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to extract structured data from documents using their built-in vision capabilities.                                                    | Complex documents with a mix of text and images, including diagrams, signatures, selection marks, etc. such as reports and contracts. |
+| [Data Extraction - Comprehensive Azure AI Document Intelligence + Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/comprehensive.ipynb) | Demonstrates how to improve the accuracy and confidence in extracting structured data from documents by combining Azure AI Document Intelligence and Azure OpenAI GPT-4o models with vision capabilities. | Any structured or unstructured document type.                                                                                         |
+| [Classification - Azure OpenAI GPT-4o with Vision](./samples/classification/openai.ipynb)                                                                 | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to classify documents using their built-in vision capabilities.                                                                        | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails.               |
+| [Classification - Azure AI Document Intelligence + Embeddings](./samples/classification/document-intelligence-embeddings.ipynb)                           | Demonstrates how to use Azure AI Document Intelligence pre-built layout and embeddings models to classify documents based on their content.                                                               | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails.               |
 
 ## Getting Started
 
-The sample repository comes with a [**Dev Container**](./.devcontainer/README.md) that contains all the necessary tools and dependencies to run the sample. To use the Dev Container, you need to have the following tools installed on your local machine:
+The sample repository comes with a [**Dev Container**](./.devcontainer/README.md) that contains all the necessary tools and dependencies to run the sample.
+
+> [!IMPORTANT]
+> An Azure subscription is required to run these samples. If you don't have an Azure subscription, create an [account](https://azure.microsoft.com/en-us/).
+
+### Setup on GitHub Codespaces
+
+To use the Dev Container in GitHub Codespaces, follow these steps:
+
+1. Click on the `Code` button in the repository and select `Codespaces`.
+2. Click on the **+** button to create a new Codespace using the provided `.devcontainer\devcontainer.json` configuration.
+3. Once the Codespace is created, continue to the [Azure environment setup](#deploy-the-azure-environment) section.
+
+### Setup on Local
+
+To use the Dev Container, you need to have the following tools installed on your local machine:
 
 - Install [**Visual Studio Code**](https://code.visualstudio.com/download)
 - Install [**Docker Desktop**](https://www.docker.com/products/docker-desktop)
 - Install [**Remote - Containers**](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for Visual Studio Code
 
-Additionally, you will require:
-
-- An Azure subscription. If you don't have an Azure subscription, create an [account](https://azure.microsoft.com/en-us/).
-
 To setup a local development environment, follow these steps:
 
-> [!NOTE]
+> [!IMPORTANT]
 > Ensure that Docker Desktop is running on your local machine.
 
 1. Clone the repository to your local machine.
 2. Open the repository in Visual Studio Code.
 3. Press `F1` to open the command palette and type `Dev Containers: Reopen in Container`.
 
-Once the Dev Container is up and running, you can setup the necessary Azure services and run the [samples](#samples) in the repository by running the following command in VS Code's `pwsh` terminal:
+Once the Dev Container is up and running, continue to the [Azure environment setup](#deploy-the-azure-environment) section.
+
+### Deploy the Azure environment
+
+Once the Dev Container is up and running, you can setup the necessary Azure services and run the [samples](#samples) in the repository by running the following command in a `pwsh` terminal:
 
 > [!NOTE]
 > For the most optimal sample experience, it is recommended to run the samples in `East US` which will provide support for all the services used in the samples. Find out more about region availability for [Azure AI Document Intelligence](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept-layout?view=doc-intel-4.0.0&tabs=sample-code), and [`GPT-4o`](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#standard-and-global-standard-deployment-model-quota), [`Phi-3.5 MoE`](https://azure.microsoft.com/en-us/pricing/details/phi-3/), and [`text-embedding-3-large`](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#standard-deployment-model-availability) models.
@@ -76,6 +94,9 @@ az login
 
 ./Setup-Environment.ps1 -DeploymentName <UniqueDeploymentName> -Location <AzureRegion> -SkipInfrastructure $false
 ```
+
+> [!NOTE]
+> If a specific tenant is required, use the `--tenant <TenantId>` parameter in the `az login` command.
 
 The script will deploy the following resources to your Azure subscription:
 

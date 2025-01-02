@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Default: Exit on any failure.
-set -e
+USERNAME=${USERNAME:-"vscode"}
+
+set -eux
 
 # Setup STDERR.
 err() {
@@ -13,9 +14,12 @@ if [ "$(id -u)" -ne 0 ]; then
     exit 1
 fi
 
-###################
+# Ensure apt is in non-interactive to avoid prompts
+export DEBIAN_FRONTEND=noninteractive
+
+###########################################
 # Helper Functions
-###################
+###########################################
 
 apt_get_update() {
     if [ "$(find /var/lib/apt/lists/* | wc -l)" = "0" ]; then
@@ -35,9 +39,6 @@ check_packages() {
 ###########################################
 # Install Feature
 ###########################################
-
-# Ensure apt is in non-interactive to avoid prompts
-export DEBIAN_FRONTEND=noninteractive
 
 # Install dependencies
 check_packages poppler-utils tesseract-ocr libtesseract-dev ffmpeg libsm6 libxext6 python3-opencv
