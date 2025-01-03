@@ -43,7 +43,7 @@ def merge_confidence_values(confidence_a: dict, confidence_b: dict):
     def merge_field_confidence_value(
         field_a: any,
         field_b: any,
-        score_resolver: callable = max
+        score_resolver: callable = min
     ) -> dict:
         """
         Merges two field confidence values.
