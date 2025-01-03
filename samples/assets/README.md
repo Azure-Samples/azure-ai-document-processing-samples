@@ -9,12 +9,18 @@ This folder contains sample documents that are used for demonstrating the techni
 
 ### Invoices
 
-- [invoice_1.pdf](./invoice_1.pdf) - Digitized. Contains a complex grid-based layout with split and merged cells. Includes multiple pages, handwriting, slightly obscured text, and notes in the margins.
-- [invoice_2.pdf](./invoice_2.pdf) - Digitized. Contains a well-structured, simple grid layout. Includes multiple pages, no handwriting.
-- [invoice_3.pdf](./invoice_3.pdf) - Scanned. Contains a complex grid-based layout with split and merged cells. Includes completely obscured values, and handwritten notes across the document. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
-- [invoice_4.pdf](./invoice_4.pdf) - Scanned. Contains a poor quality scan with faded ink, and grid with no clear cell boundaries. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
-- [invoice_5.pdf](./invoice_5.pdf) - Scanned. Contains a skewed scan. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+- [invoice_1.pdf](./invoices/invoice_1.pdf) - Digitized. Contains a complex grid-based layout with split and merged cells. Includes multiple pages, handwriting, slightly obscured text, and notes in the margins.
+- [invoice_2.pdf](./invoices/invoice_2.pdf) - Digitized. Contains a well-structured, simple grid layout. Includes multiple pages, no handwriting.
+- [invoice_3.pdf](./invoices/invoice_3.pdf) - Scanned. Contains a complex grid-based layout with split and merged cells. Includes completely obscured values, and handwritten notes across the document. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+- [invoice_4.pdf](./invoices/invoice_4.pdf) - Scanned. Contains a poor quality scan with faded ink, and grid with no clear cell boundaries. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+- [invoice_5.pdf](./invoices/invoice_5.pdf) - Scanned. Contains a skewed scan. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
 
-### Contracts/Agreements
+### Vehicle Insurance Policies
 
-- [Vehicle Insurance Policy](./VehicleInsurancePolicy.pdf) - A 13-page sample vehicle insurance policy document that contains a mix of text and tables with details that are inferred across key pieces of information on multiple pages.
+Each document is a 13-page vehicle insurance policy document that contains a mix of text and tables with details that are inferred across key pieces of information on multiple pages. Each document is a different policy with different details.
+
+- [policy_1.pdf](./vehicle_insurance/policy_1.pdf)
+- [policy_2.pdf](./vehicle_insurance/policy_2.pdf)
+- [policy_3.pdf](./vehicle_insurance/policy_3.pdf)
+- [policy_4.pdf](./vehicle_insurance/policy_4.pdf)
+- [policy_5.pdf](./vehicle_insurance/policy_5.pdf)
