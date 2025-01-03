@@ -12,6 +12,8 @@ This folder contains sample documents that are used for demonstrating the techni
 - [invoice_1.pdf](./invoice_1.pdf) - Digitized. Contains a complex grid-based layout with split and merged cells. Includes multiple pages, handwriting, slightly obscured text, and notes in the margins.
 - [invoice_2.pdf](./invoice_2.pdf) - Digitized. Contains a well-structured, simple grid layout. Includes multiple pages, no handwriting.
 - [invoice_3.pdf](./invoice_3.pdf) - Scanned. Contains a complex grid-based layout with split and merged cells. Includes completely obscured values, and handwritten notes across the document. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+- [invoice_4.pdf](./invoice_4.pdf) - Scanned. Contains a poor quality scan with faded ink, and grid with no clear cell boundaries. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+- [invoice_5.pdf](./invoice_5.pdf) - Scanned. Contains a skewed scan. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
 
 ### Contracts/Agreements
 
