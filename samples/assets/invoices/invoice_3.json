@@ -76,7 +76,7 @@
             "is_signed": true
         },
         "returns": null,
-        "total_return_quantity": 0,
+        "total_return_quantity": null,
         "returns_customer_signature": {
             "signatory": null,
             "is_signed": null
