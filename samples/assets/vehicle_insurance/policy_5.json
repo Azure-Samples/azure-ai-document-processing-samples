@@ -1,0 +1,43 @@
+{
+    "fname": "policy_5.pdf",
+    "expected": {
+        "policy_number": "GB34567890123",
+        "cost": {
+            "annual_total": 750.00,
+            "payable_by_date": "2024-05-20"
+        },
+        "renewal": {
+            "renewal_notification_date": "2025-04-20",
+            "last_date_to_renew": "2025-05-04"
+        },
+        "effective_from": "2024-05-12",
+        "effective_to": "2025-05-11",
+        "last_date_to_cancel": "2024-05-26",
+        "policyholder": {
+            "first_name": "Laura",
+            "last_name": "Bennett",
+            "date_of_birth": "1990-09-08",
+            "address": "18 Elm Grove, Bristol, BS1 5HQ",
+            "email_address": "LBennett@me.com",
+            "total_years_of_residence_in_uk": 29,
+            "driving_license_number": "BENNEL008099JJ9IT"
+        },
+        "vehicle": {
+            "registration_number": "IJ90MNO",
+            "make": "Honda",
+            "model": "Civic",
+            "year": 2019,
+            "value": 11000
+        },
+        "accident_excess": {
+            "compulsory": 300,
+            "voluntary": 200,
+            "unapproved_repair_penalty": 250
+        },
+        "fire_and_theft_excess": {
+            "compulsory": 250,
+            "voluntary": 150,
+            "unapproved_repair_penalty": 250
+        }
+    }
+}
