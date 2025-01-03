@@ -13,8 +13,6 @@ The following tools are included in the devcontainer:
 - **PowerShell Core** - Used for running deployment scripts for the necessary infrastructure.
 - **Azure CLI** - Used to managed the Azure resources.
 - **Azure Developer CLI** - Used to manage the Azure resources.
-- **.NET 8.0 SDK** - Used for .NET samples.
-- **Node 22.x** - Used for JavaScript samples.
 - **Python 3.12** - Used for Python samples.
 - **GitHub CLI** - Used to interact with the GitHub repository.
 - **Docker-in-Docker** - Used to run Docker containers from within the devcontainer.
@@ -30,9 +28,7 @@ The following VS Code extensions are included in the devcontainer:
 - **Bicep** - Bicep language support.
 - **Azure Tools** - Azure resource management support.
 - **PowerShell** - PowerShell language support.
-- **C# Dev Kit** - C# language support.
 - **GitHub Pull Requests** - GitHub pull request support.
-- **Polyglot Notebooks** - Jupyter notebook support for C# and PowerShell.
 
 ## Python Dependencies
 
@@ -44,7 +40,6 @@ The following Python dependencies are included in the devcontainer:
 - **azure-storage-blob** - To interact with the Azure Blob Storage service.
 - **ipycanvas** - To create interactive canvases in Jupyter notebooks.
 - **ipykernel** - To create Jupyter kernels.
-- **marker-pdf** - To extract text from PDF files as Markdown.
 - **matplotlib** - To create plots in Jupyter notebooks.
 - **notebook** - To create Jupyter notebooks.
 - **numpy** - To work with numerical data.
@@ -57,6 +52,5 @@ The following Python dependencies are included in the devcontainer:
 - **pytesseract** - To extract text from images.
 - **python-dotenv** - To load environment variables from a `.env` file.
 - **seaborn** - To create plots in Jupyter notebooks.
-- **surya-ocr** - To extract text from images.
+- **tabulate** - To create tables in Jupyter notebooks.
 - **tiktoken** - To calculate confidence scores for structured outputs using OpenAI's logprobs.
-- **transformers** - To interact with the Hugging Face Transformers library.
