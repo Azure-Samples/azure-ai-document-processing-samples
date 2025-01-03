@@ -4,7 +4,7 @@
         "policy_number": "GB34567890123",
         "cost": {
             "annual_total": 750.00,
-            "payable_by_date": "2024-05-20"
+            "payable_by_date": "2024-05-22"
         },
         "renewal": {
             "renewal_notification_date": "2025-04-20",
