@@ -96,8 +96,5 @@
             "signatory": "James T",
             "is_signed": true
         }
-    },
-    "max_tokens": 4096,
-    "temperature": 0.1,
-    "top_p": 0.1
+    }
 }

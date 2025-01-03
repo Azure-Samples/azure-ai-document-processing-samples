@@ -66,8 +66,5 @@
             "signatory": null,
             "is_signed": false
         }
-    },
-    "max_tokens": 4096,
-    "temperature": 0.1,
-    "top_p": 0.1
+    }
 }

@@ -59,8 +59,5 @@
         "total_return_quantity": null,
         "returns_customer_signature": null,
         "returns_vendor_signature": null
-    },
-    "max_tokens": 4096,
-    "temperature": 0.1,
-    "top_p": 0.1
+    }
 }
