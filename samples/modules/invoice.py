@@ -122,7 +122,7 @@ class InvoiceItem(BaseModel):
         tax: Tax amount applied to the line item.
         tax_rate: Tax rate applied to the line item.
         unit_price: Net or gross price of one unit of the line item.
-        amount: The amount of the line item.
+        total: The total charges associated with the line item.
         reason: Reason for returning the line item.
     """
 
@@ -144,8 +144,8 @@ class InvoiceItem(BaseModel):
     unit_price: Optional[float] = Field(
         description='Net or gross price of one unit of the line item, e.g. 10.00',
     )
-    amount: Optional[float] = Field(
-        description='The amount of the line item, e.g. 100.00',
+    total: Optional[float] = Field(
+        description='The total charges associated with the line item, e.g. 100.00',
     )
     reason: Optional[str] = Field(
         description='Reason for returning the line item, e.g. Damaged',
@@ -166,7 +166,7 @@ class InvoiceItem(BaseModel):
             tax=0.0,
             tax_rate='',
             unit_price=0.0,
-            amount=0.0,
+            total=0.0,
             reason=''
         )
 
@@ -185,7 +185,7 @@ class InvoiceItem(BaseModel):
             'tax': self.tax,
             'tax_rate': self.tax_rate,
             'unit_price': self.unit_price,
-            'amount': self.amount,
+            'total': self.total,
             'reason': self.reason
         }
 
@@ -392,7 +392,7 @@ class Invoice(BaseModel):
                 tax=item.get('tax', None),
                 tax_rate=item.get('tax_rate', None),
                 unit_price=item.get('unit_price', None),
-                amount=item.get('amount', None),
+                total=item.get('total', None),
                 reason=item.get('reason', None)
             )
 
@@ -550,7 +550,11 @@ class InvoiceEvaluator:
                 'overall': 0
             }
 
-            if actual is None:
+            if expected is None and actual is None:
+                accuracy['overall'] = 1
+                return accuracy
+
+            if actual is None or expected is None:
                 return accuracy
 
             accuracy['street'] = 1 if (expected.street or '').lower() == (
@@ -588,12 +592,16 @@ class InvoiceEvaluator:
                 'tax': 0,
                 'tax_rate': 0,
                 'unit_price': 0,
-                'amount': 0,
+                'total': 0,
                 'reason': 0,
                 'overall': 0
             }
 
-            if actual is None:
+            if expected is None and actual is None:
+                accuracy['overall'] = 1
+                return accuracy
+
+            if actual is None or expected is None:
                 return accuracy
 
             accuracy['product_code'] = 1 if (expected.product_code or '').lower() == (
@@ -605,12 +613,12 @@ class InvoiceEvaluator:
             accuracy['tax_rate'] = 1 if (expected.tax_rate or '').lower() == (
                 actual.tax_rate or '').lower() else 0
             accuracy['unit_price'] = 1 if expected.unit_price == actual.unit_price else 0
-            accuracy['amount'] = 1 if expected.amount == actual.amount else 0
+            accuracy['total'] = 1 if expected.total == actual.total else 0
             accuracy['reason'] = 1 if (expected.reason or '').lower() == (
                 actual.reason or '').lower() else 0
 
             accuracy['overall'] = (accuracy['product_code'] + accuracy['description'] + accuracy['quantity'] + accuracy['tax'] +
-                                   accuracy['tax_rate'] + accuracy['unit_price'] + accuracy['amount'] + accuracy['reason']) / 8
+                                   accuracy['tax_rate'] + accuracy['unit_price'] + accuracy['total'] + accuracy['reason']) / 8
 
             return accuracy
 
@@ -632,7 +640,11 @@ class InvoiceEvaluator:
                 'overall': 0
             }
 
-            if actual is None:
+            if expected is None and actual is None:
+                accuracy['overall'] = 1
+                return accuracy
+
+            if actual is None or expected is None:
                 return accuracy
 
             accuracy['signatory'] = 1 if (expected.signatory or '').lower() == (

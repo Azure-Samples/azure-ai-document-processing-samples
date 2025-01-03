@@ -7,5 +7,12 @@ This folder contains sample documents that are used for demonstrating the techni
 
 ## Sample Documents
 
-- [Invoice](./Invoice.pdf) - A 2-page sample invoice document that contains a semi-complex grid layout with itemized details, notes, totals, and signatures.
+### Invoices
+
+- [invoice_1.pdf](./invoice_1.pdf) - Digitized. Contains a complex grid-based layout with split and merged cells. Includes multiple pages, handwriting, slightly obscured text, and notes in the margins.
+- [invoice_2.pdf](./invoice_2.pdf) - Digitized. Contains a well-structured, simple grid layout. Includes multiple pages, no handwriting.
+- [invoice_3.pdf](./invoice_3.pdf) - Scanned. Contains a complex grid-based layout with split and merged cells. Includes completely obscured values, and handwritten notes across the document. Source - [Kaggle - Tough Invoices](https://www.kaggle.com/datasets/dibyajyotimohanta/tough-invoices)
+
+### Contracts/Agreements
+
 - [Vehicle Insurance Policy](./VehicleInsurancePolicy.pdf) - A 13-page sample vehicle insurance policy document that contains a mix of text and tables with details that are inferred across key pieces of information on multiple pages.

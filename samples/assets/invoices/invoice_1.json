@@ -32,7 +32,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": 16.62,
-                "amount": 83.1,
+                "total": 83.1,
                 "reason": null
             },
             {
@@ -42,7 +42,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": 2.49,
-                "amount": 24.9,
+                "total": 24.9,
                 "reason": null
             },
             {
@@ -52,7 +52,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": 15.46,
-                "amount": 185.52,
+                "total": 185.52,
                 "reason": null
             }
         ],
@@ -73,7 +73,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": null,
-                "amount": null,
+                "total": null,
                 "reason": "This item was provided in previous order as a replacement"
             },
             {
@@ -83,7 +83,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": null,
-                "amount": null,
+                "total": null,
                 "reason": "Not required"
             }
         ],

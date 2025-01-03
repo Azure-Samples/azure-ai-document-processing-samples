@@ -32,7 +32,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": 5.00,
-                "amount": 750.00,
+                "total": 750.00,
                 "reason": null
             }
         ],
@@ -53,7 +53,7 @@
                 "tax": null,
                 "tax_rate": null,
                 "unit_price": null,
-                "amount": null,
+                "total": null,
                 "reason": "Incorrect size. Too small."
             }
         ],
