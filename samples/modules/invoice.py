@@ -202,7 +202,7 @@ class Invoice(BaseModel):
         purchase_order: Purchase order reference number.
         invoice_id: Reference ID for the invoice.
         invoice_date: Date the invoice was issued.
-        due_date: Date when the invoice should be paid.
+        payable_by: Date when the invoice should be paid.
         vendor_name: Name of the vendor who created the invoice.
         vendor_address: Full address of the vendor.
         vendor_tax_id: Government tax ID of the vendor.
@@ -211,8 +211,6 @@ class Invoice(BaseModel):
         total_discount: Total discount applied to the invoice.
         total_tax: Total tax applied to the invoice.
         invoice_total: Total charges associated with the invoice.
-        service_start_date: Start date of the service provided.
-        service_end_date: End date of the service provided.
         payment_terms: Payment terms for the invoice.
         items: List of line items in the invoice.
         total_item_quantity: Total quantity of items in the invoice.
@@ -245,7 +243,7 @@ class Invoice(BaseModel):
     invoice_date: Optional[str] = Field(
         description='Date the invoice was issued or delivered, e.g., 2021-01-01'
     )
-    due_date: Optional[str] = Field(
+    payable_by: Optional[str] = Field(
         description='Date when the invoice should be paid, e.g., 2021-01-15'
     )
     vendor_name: Optional[str] = Field(
@@ -271,12 +269,6 @@ class Invoice(BaseModel):
     )
     invoice_total: Optional[float] = Field(
         description='Total charges associated with the invoice, e.g. 95.00'
-    )
-    service_start_date: Optional[str] = Field(
-        description='Start date of the service provided (for example, a utility bill period), e.g. 2021-01-01'
-    )
-    service_end_date: Optional[str] = Field(
-        description='End date of the service provided (for example, a utility bill period), e.g. 2021-01-31'
     )
     payment_terms: Optional[str] = Field(
         description='Payment terms for the invoice, e.g. Net 90'
@@ -323,7 +315,7 @@ class Invoice(BaseModel):
             purchase_order='',
             invoice_id='',
             invoice_date=datetime.now().strftime('%Y-%m-%d'),
-            due_date=datetime.now().strftime('%Y-%m-%d'),
+            payable_by=datetime.now().strftime('%Y-%m-%d'),
             vendor_name='',
             vendor_address=InvoiceAddress.example(),
             vendor_tax_id='',
@@ -332,8 +324,6 @@ class Invoice(BaseModel):
             total_discount=0.0,
             total_tax=0.0,
             invoice_total=0.0,
-            service_start_date=datetime.now().strftime('%Y-%m-%d'),
-            service_end_date=datetime.now().strftime('%Y-%m-%d'),
             payment_terms='',
             items=[InvoiceItem.example()],
             total_item_quantity=0.0,
@@ -440,7 +430,7 @@ class Invoice(BaseModel):
             purchase_order=json_content.get('purchase_order', None),
             invoice_id=json_content.get('invoice_id', None),
             invoice_date=json_content.get('invoice_date', None),
-            due_date=json_content.get('due_date', None),
+            payable_by=json_content.get('payable_by', None),
             vendor_name=json_content.get('vendor_name', None),
             vendor_address=create_invoice_address(
                 json_content.get('vendor_address', None)),
@@ -451,8 +441,6 @@ class Invoice(BaseModel):
             total_discount=json_content.get('total_discount', None),
             total_tax=json_content.get('total_tax', None),
             invoice_total=json_content.get('invoice_total', None),
-            service_start_date=json_content.get('service_start_date', None),
-            service_end_date=json_content.get('service_end_date', None),
             payment_terms=json_content.get('payment_terms', None),
             items=invoice_items,
             total_item_quantity=json_content.get('total_item_quantity', None),
@@ -491,7 +479,7 @@ class Invoice(BaseModel):
             'purchase_order': self.purchase_order,
             'invoice_id': self.invoice_id,
             'invoice_date': self.invoice_date,
-            'due_date': self.due_date,
+            'payable_by': self.payable_by,
             'vendor_name': self.vendor_name,
             'vendor_address': self.vendor_address.to_dict() if self.vendor_address is not None else None,
             'vendor_tax_id': self.vendor_tax_id,
@@ -500,8 +488,6 @@ class Invoice(BaseModel):
             'total_discount': self.total_discount,
             'total_tax': self.total_tax,
             'invoice_total': self.invoice_total,
-            'service_start_date': self.service_start_date,
-            'service_end_date': self.service_end_date,
             'payment_terms': self.payment_terms,
             'products': items,
             'total_item_quantity': self.total_item_quantity,
@@ -666,7 +652,7 @@ class InvoiceEvaluator:
             'purchase_order': 0,
             'invoice_id': 0,
             'invoice_date': 0,
-            'due_date': 0,
+            'payable_by': 0,
             'vendor_name': 0,
             'vendor_address': 0,
             'vendor_tax_id': 0,
@@ -675,8 +661,6 @@ class InvoiceEvaluator:
             'total_discount': 0,
             'total_tax': 0,
             'invoice_total': 0,
-            'service_start_date': 0,
-            'service_end_date': 0,
             'payment_terms': 0,
             'items': [],
             'items_overall': 0,
@@ -721,7 +705,7 @@ class InvoiceEvaluator:
         accuracy['invoice_id'] = 1 if (self.expected.invoice_id or '').lower(
         ) == (actual.invoice_id or '').lower() else 0
         accuracy['invoice_date'] = 1 if self.expected.invoice_date == actual.invoice_date else 0
-        accuracy['due_date'] = 1 if self.expected.due_date == actual.due_date else 0
+        accuracy['payable_by'] = 1 if self.expected.payable_by == actual.payable_by else 0
         accuracy['vendor_name'] = 1 if (self.expected.vendor_name or '').lower(
         ) == (actual.vendor_name or '').lower() else 0
 
@@ -748,8 +732,6 @@ class InvoiceEvaluator:
         accuracy['total_discount'] = 1 if self.expected.total_discount == actual.total_discount else 0
         accuracy['total_tax'] = 1 if self.expected.total_tax == actual.total_tax else 0
         accuracy['invoice_total'] = 1 if self.expected.invoice_total == actual.invoice_total else 0
-        accuracy['service_start_date'] = 1 if self.expected.service_start_date == actual.service_start_date else 0
-        accuracy['service_end_date'] = 1 if self.expected.service_end_date == actual.service_end_date else 0
         accuracy['payment_terms'] = 1 if (self.expected.payment_terms or '').lower(
         ) == (actual.payment_terms or '').lower() else 0
 
@@ -830,11 +812,10 @@ class InvoiceEvaluator:
                 self.expected.returns_vendor_signature, actual.returns_vendor_signature)
 
         accuracy['overall'] = (accuracy['customer_name'] + accuracy['customer_address']['overall'] + accuracy['customer_tax_id'] + accuracy['shipping_address']['overall'] +
-                               accuracy['purchase_order'] + accuracy['invoice_id'] + accuracy['invoice_date'] + accuracy['due_date'] + accuracy['vendor_name'] +
+                               accuracy['purchase_order'] + accuracy['invoice_id'] + accuracy['invoice_date'] + accuracy['payable_by'] + accuracy['vendor_name'] +
                                accuracy['vendor_address']['overall'] + accuracy['vendor_tax_id'] + accuracy['remittance_address']['overall'] + accuracy['subtotal'] +
-                               accuracy['total_discount'] + accuracy['total_tax'] + accuracy['invoice_total'] + accuracy['service_start_date'] + accuracy['service_end_date'] +
-                               accuracy['payment_terms'] + accuracy['items_overall'] + accuracy['total_item_quantity'] + accuracy['items_customer_signature']['overall'] +
-                               accuracy['items_vendor_signature']['overall'] + accuracy['returns_overall'] + accuracy['total_return_quantity'] + accuracy['returns_customer_signature']['overall'] +
-                               accuracy['returns_vendor_signature']['overall']) / 27
+                               accuracy['total_discount'] + accuracy['total_tax'] + accuracy['invoice_total'] + accuracy['payment_terms'] + accuracy['items_overall'] +
+                               accuracy['total_item_quantity'] + accuracy['items_customer_signature']['overall'] + accuracy['items_vendor_signature']['overall'] +
+                               accuracy['returns_overall'] + accuracy['total_return_quantity'] + accuracy['returns_customer_signature']['overall'] + accuracy['returns_vendor_signature']['overall']) / 25
 
         return accuracy
