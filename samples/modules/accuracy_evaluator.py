@@ -6,17 +6,20 @@ class AccuracyEvaluator:
         match_keys (list[str]): The list of keys to use for matching objects in a list.
         total_matches (int): The total number of matches found.
         total_comparisons (int): The total number of comparisons made.
+        ignore_keys (list[str]): The list of keys to ignore during comparison.
     """
 
-    def __init__(self, match_keys: list[str] = None):
+    def __init__(self, match_keys: list[str] = None, ignore_keys: list[str] = None):
         """
         Initializes a new instance of the AccuracyEvaluator class.
 
         Args:
             match_keys (list[str]): The list of keys to use for matching objects in a list.
+            ignore_keys (list[str]): The list of keys to ignore during comparison.
         """
 
         self.match_keys = match_keys or []
+        self.ignore_keys = ignore_keys or []
         self.total_matches = 0
         self.total_comparisons = 0
 
@@ -40,6 +43,8 @@ class AccuracyEvaluator:
         if isinstance(expected, dict):
             accuracy = {}
             for key, exp_val in expected.items():
+                if key in self.ignore_keys:
+                    continue  # Skip keys that are in the ignore_keys list
                 act_val = actual.get(key) if isinstance(actual, dict) else None
                 accuracy[key] = self._compare_objects(exp_val, act_val)
             return accuracy

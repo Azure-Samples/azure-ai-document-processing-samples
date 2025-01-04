@@ -416,7 +416,7 @@ class Invoice(BaseModel):
             )
 
         invoice_items = [create_invoice_item(
-            product) for product in json_content.get('products', [])]
+            item) for item in json_content.get('items', [])]
         invoice_returns = [create_invoice_item(
             return_product) for return_product in json_content.get('returns', [])]
 
@@ -489,7 +489,7 @@ class Invoice(BaseModel):
             'total_tax': self.total_tax,
             'invoice_total': self.invoice_total,
             'payment_terms': self.payment_terms,
-            'products': items,
+            'items': items,
             'total_item_quantity': self.total_item_quantity,
             'items_customer_signature': self.items_customer_signature.to_dict() if self.items_customer_signature is not None else None,
             'items_vendor_signature': self.items_vendor_signature.to_dict() if self.items_vendor_signature is not None else None,
