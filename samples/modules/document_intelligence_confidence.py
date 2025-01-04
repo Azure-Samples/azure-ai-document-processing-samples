@@ -2,7 +2,7 @@ import copy
 from typing import Iterable, Optional
 from azure.ai.documentintelligence.models import AnalyzeResult, DocumentPage, DocumentLine, DocumentWord
 from modules.confidence import get_confidence_values
-from modules.validation import value_contains, value_match
+from modules.utils import value_contains, value_match
 
 
 class DIDocumentLine(DocumentLine):
@@ -308,7 +308,7 @@ def evaluate_confidence(
             field_confidence_score = get_field_confidence_score(
                 scores=[match.confidence for match in matching_lines],
                 default_score=0.0,
-                multiple_score_resolver=max
+                multiple_score_resolver=min
             )
 
             normalized_polygons = [

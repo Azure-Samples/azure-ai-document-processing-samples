@@ -1,0 +1,43 @@
+{
+    "fname": "policy_4.pdf",
+    "expected": {
+        "policy_number": "GB87654321098",
+        "cost": {
+            "annual_total": 450.00,
+            "payable_by_date": "2023-07-11"
+        },
+        "renewal": {
+            "renewal_notification_date": "2024-06-09",
+            "last_date_to_renew": "2024-06-23"
+        },
+        "effective_from": "2023-07-01",
+        "effective_to": "2024-06-30",
+        "last_date_to_cancel": "2023-07-15",
+        "policyholder": {
+            "first_name": "David",
+            "last_name": "King",
+            "date_of_birth": "1967-05-04",
+            "address": "200 Oak Avenue, Birmingham, B1 1AA",
+            "email_address": "dking@me.com",
+            "total_years_of_residence_in_uk": 56,
+            "driving_license_number": "KINGDA704056II7LL"
+        },
+        "vehicle": {
+            "registration_number": "GH78JKL",
+            "make": "Audi",
+            "model": "A3",
+            "year": 2017,
+            "value": 8000
+        },
+        "accident_excess": {
+            "compulsory": 200,
+            "voluntary": 100,
+            "unapproved_repair_penalty": 250
+        },
+        "fire_and_theft_excess": {
+            "compulsory": 150,
+            "voluntary": 75,
+            "unapproved_repair_penalty": 250
+        }
+    }
+}

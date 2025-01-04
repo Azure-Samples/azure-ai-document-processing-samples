@@ -5,20 +5,78 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
+class InvoiceAddress(BaseModel):
+    """
+    A class representing an address in an invoice.
+
+    Attributes:
+        street: Street address
+        city: City, e.g. New York
+        state: State, e.g. NY
+        postal_code: Postal code, e.g. 10001
+        country: Country, e.g. USA
+    """
+
+    street: Optional[str] = Field(
+        description='Street address, e.g. 123 Main St.'
+    )
+    city: Optional[str] = Field(
+        description='City, e.g. New York'
+    )
+    state: Optional[str] = Field(
+        description='State, e.g. NY'
+    )
+    postal_code: Optional[str] = Field(
+        description='Postal code, e.g. 10001'
+    )
+    country: Optional[str] = Field(
+        description='Country, e.g. USA'
+    )
+
+    @staticmethod
+    def example():
+        """
+        Creates an empty example InvoiceAddress object.
+
+        Returns:
+            InvoiceAddress: An empty InvoiceAddress object.
+        """
+
+        return InvoiceAddress(
+            street='',
+            city='',
+            state='',
+            postal_code='',
+            country=''
+        )
+
+    def to_dict(self):
+        """
+        Converts the InvoiceAddress object to a dictionary.
+
+        Returns:
+            dict: The InvoiceAddress object as a dictionary.
+        """
+
+        return {
+            'street': self.street,
+            'city': self.city,
+            'state': self.state,
+            'postal_code': self.postal_code,
+            'country': self.country
+        }
+
+
 class InvoiceSignature(BaseModel):
     """
     A class representing a signature for an invoice.
 
     Attributes:
-        type: Type of signature.
-        name: Name of the person who signed the invoice.
+        signatory: Name of the person who signed the invoice.
         is_signed: Indicates if the invoice is signed.
     """
 
-    type: Optional[str] = Field(
-        description='Type of signature, e.g., Recipient, Customer, Driver'
-    )
-    name: Optional[str] = Field(
+    signatory: Optional[str] = Field(
         description='Name of the person who signed the invoice'
     )
     is_signed: Optional[bool] = Field(
@@ -26,19 +84,16 @@ class InvoiceSignature(BaseModel):
     )
 
     @staticmethod
-    def example(type=''):
+    def example():
         """
         Creates an empty example InvoiceSignature object.
-
-        Args:
-            type: The type of the signature.
 
         Returns:
             InvoiceSignature: An empty InvoiceSignature object
         """
+
         return InvoiceSignature(
-            type=type,
-            name='',
+            signatory='',
             is_signed=False
         )
 
@@ -51,74 +106,85 @@ class InvoiceSignature(BaseModel):
         """
 
         return {
-            'type': self.type,
-            'name': self.name,
+            'signatory': self.signatory,
             'is_signed': self.is_signed
         }
 
 
-class InvoiceProduct(BaseModel):
+class InvoiceItem(BaseModel):
     """
-    A class representing a product item in an invoice.
+    A class representing a line item in an invoice.
 
     Attributes:
-        id: Identifier of the product.
-        description: Description of the product.
-        unit_price: Unit price of the product.
-        quantity: Quantity of the product.
-        total: Total price of the product.
-        reason: Reason for returning the product.
+        product_code: Product code, product number, or SKU associated with the line item.
+        description: Description of the line item.
+        quantity: Quantity of the line item.
+        tax: Tax amount applied to the line item.
+        tax_rate: Tax rate applied to the line item.
+        unit_price: Net or gross price of one unit of the line item.
+        total: The total charges associated with the line item.
+        reason: Reason for returning the line item.
     """
 
-    id: Optional[str] = Field(
-        description='Identifier of the product'
+    product_code: Optional[str] = Field(
+        description='Product code, product number, or SKU associated with the line item, e.g. 12345',
     )
     description: Optional[str] = Field(
-        description='Description of the product',
-    )
-    unit_price: Optional[float] = Field(
-        description='Unit price of the product'
+        description='Description of the line item, e.g. Product A',
     )
     quantity: Optional[int] = Field(
-        description='Quantity of the product'
+        description='Quantity of the line item',
+    )
+    tax: Optional[float] = Field(
+        description='Tax amount applied to the line item, e.g. 6.00',
+    )
+    tax_rate: Optional[str] = Field(
+        description='Tax rate applied to the line item, e.g. 18%',
+    )
+    unit_price: Optional[float] = Field(
+        description='Net or gross price of one unit of the line item, e.g. 10.00',
     )
     total: Optional[float] = Field(
-        description='Total price of the product'
+        description='The total charges associated with the line item, e.g. 100.00',
     )
     reason: Optional[str] = Field(
-        description='Reason for returning the product'
+        description='Reason for returning the line item, e.g. Damaged',
     )
 
     @staticmethod
     def example():
         """
-        Creates an empty example InvoiceProduct object.
+        Creates an empty example InvoiceItem object.
 
         Returns:
-            InvoiceProduct: An empty InvoiceProduct object.
+            InvoiceItem: An empty InvoiceItem object.
         """
-        return InvoiceProduct(
-            id='',
+        return InvoiceItem(
+            product_code='',
             description='',
-            unit_price=0.0,
             quantity=0.0,
+            tax=0.0,
+            tax_rate='',
+            unit_price=0.0,
             total=0.0,
             reason=''
         )
 
     def to_dict(self):
         """
-        Converts the InvoiceProduct object to a dictionary.
+        Converts the InvoiceItem object to a dictionary.
 
         Returns:
-            dict: The InvoiceProduct object as a dictionary.
+            dict: The InvoiceItem object as a dictionary.
         """
 
         return {
-            'id': self.id,
+            'product_code': self.product_code,
             'description': self.description,
-            'unit_price': self.unit_price,
             'quantity': self.quantity,
+            'tax': self.tax,
+            'tax_rate': self.tax_rate,
+            'unit_price': self.unit_price,
             'total': self.total,
             'reason': self.reason
         }
@@ -129,55 +195,107 @@ class Invoice(BaseModel):
     A class representing an invoice.
 
     Attributes:
-        invoice_number: Invoice number.
-        purchase_order_number: Purchase order number.
-        customer_name: Name of the customer/company.
-        customer_address: Full address of the customer/company.
-        delivery_date: Date of delivery.
+        customer_name: Name of the customer being invoiced.
+        customer_address: Full address of the customer.
+        customer_tax_id: Government tax ID of the customer.
+        shipping_address: Full address of the shipping location for the customer.
+        purchase_order: Purchase order reference number.
+        invoice_id: Reference ID for the invoice.
+        invoice_date: Date the invoice was issued.
         payable_by: Date when the invoice should be paid.
-        products: List of products in the invoice.
-        returns: List of products returned in the invoice.
-        total_product_quantity: Total quantity of products in the invoice.
-        total_product_price: Total price of products in the invoice.
-        product_signatures: List of signatures for the products in the invoice.
-        returns_signatures: List of signatures for the returned products in the invoice.
+        vendor_name: Name of the vendor who created the invoice.
+        vendor_address: Full address of the vendor.
+        vendor_tax_id: Government tax ID of the vendor.
+        remittance_address: Full address where the payment should be sent.
+        subtotal: Subtotal of the invoice.
+        total_discount: Total discount applied to the invoice.
+        total_tax: Total tax applied to the invoice.
+        invoice_total: Total charges associated with the invoice.
+        payment_terms: Payment terms for the invoice.
+        items: List of line items in the invoice.
+        total_item_quantity: Total quantity of items in the invoice.
+        items_customer_signature: Signature of the customer for the items in the invoice.
+        items_vendor_signature: Signature of the vendor for the items in the invoice.
+        returns: List of line items returned in the invoice.
+        total_return_quantity: Total quantity of items returned in the invoice.
+        returns_customer_signature: Signature of the customer for the returned items in the invoice.
+        returns_vendor_signature: Signature of the vendor for the returned items in the invoice.
     """
 
-    invoice_number: Optional[str] = Field(
-        description='Invoice number'
-    )
-    purchase_order_number: Optional[str] = Field(
-        description='Purchase order number'
-    )
     customer_name: Optional[str] = Field(
-        description='Name of the customer/company, e.g. Company A'
+        description='Name of the customer being invoiced, e.g. Company A'
     )
-    customer_address: Optional[str] = Field(
-        description='Full address of the customer/company, e.g. 123 Main St., City, Country'
+    customer_address: Optional[InvoiceAddress] = Field(
+        description='Full address of the customer, e.g. 123 Main St., City, Country'
     )
-    delivery_date: Optional[str] = Field(
-        description='Date of delivery, e.g., 2021-01-01'
+    customer_tax_id: Optional[str] = Field(
+        description='Government tax ID of the customer, e.g. 123456789'
+    )
+    shipping_address: Optional[InvoiceAddress] = Field(
+        description='Full address of the shipping location for the customer (null if the same as customer address), e.g. 123 Main St., City, Country'
+    )
+    purchase_order: Optional[str] = Field(
+        description='Purchase order reference number, e.g. PO-1234'
+    )
+    invoice_id: Optional[str] = Field(
+        description='Reference ID for the invoice (often invoice number), e.g. INV-1234'
+    )
+    invoice_date: Optional[str] = Field(
+        description='Date the invoice was issued or delivered, e.g., 2021-01-01'
     )
     payable_by: Optional[str] = Field(
         description='Date when the invoice should be paid, e.g., 2021-01-15'
     )
-    products: Optional[list[InvoiceProduct]] = Field(
-        description='List of products in the invoice'
+    vendor_name: Optional[str] = Field(
+        description='Name of the vendor who created the invoice, e.g. Company B'
     )
-    returns: Optional[list[InvoiceProduct]] = Field(
-        description='List of products returned in the invoice'
+    vendor_address: Optional[InvoiceAddress] = Field(
+        description='Full address of the vendor, e.g. 321 Main St., City, Country'
     )
-    total_product_quantity: Optional[float] = Field(
-        description='Total quantity of products in the invoice'
+    vendor_tax_id: Optional[str] = Field(
+        description='Government tax ID of the vendor, e.g. 123456789'
     )
-    total_product_price: Optional[float] = Field(
-        description='Total price of products in the invoice'
+    remittance_address: Optional[InvoiceAddress] = Field(
+        description='Full address where the payment should be sent (null if the same as vendor address), e.g. 321 Main St., City, Country'
     )
-    product_signatures: Optional[list[InvoiceSignature]] = Field(
-        description='List of signatures for the products in the invoice'
+    subtotal: Optional[float] = Field(
+        description='Subtotal of the invoice, e.g. 100.00'
     )
-    returns_signatures: Optional[list[InvoiceSignature]] = Field(
-        description='List of signatures for the returned products in the invoice'
+    total_discount: Optional[float] = Field(
+        description='Total discount applied to the invoice, e.g. 10.00'
+    )
+    total_tax: Optional[float] = Field(
+        description='Total tax applied to the invoice, e.g. 5.00'
+    )
+    invoice_total: Optional[float] = Field(
+        description='Total charges associated with the invoice, e.g. 95.00'
+    )
+    payment_terms: Optional[str] = Field(
+        description='Payment terms for the invoice, e.g. Net 90'
+    )
+    items: Optional[list[InvoiceItem]] = Field(
+        description='List of line items in the invoice'
+    )
+    total_item_quantity: Optional[float] = Field(
+        description='Total quantity of items in the invoice'
+    )
+    items_customer_signature: Optional[InvoiceSignature] = Field(
+        description='Signature of the customer for the items in the invoice'
+    )
+    items_vendor_signature: Optional[InvoiceSignature] = Field(
+        description='Signature of the vendor for the items in the invoice'
+    )
+    returns: Optional[list[InvoiceItem]] = Field(
+        description='List of line items returned in the invoice'
+    )
+    total_return_quantity: Optional[float] = Field(
+        description='Total quantity of items returned in the invoice'
+    )
+    returns_customer_signature: Optional[InvoiceSignature] = Field(
+        description='Signature of the customer for the returned items in the invoice'
+    )
+    returns_vendor_signature: Optional[InvoiceSignature] = Field(
+        description='Signature of the vendor for the returned items in the invoice'
     )
 
     @staticmethod
@@ -190,21 +308,31 @@ class Invoice(BaseModel):
         """
 
         return Invoice(
-            invoice_number='',
-            purchase_order_number='',
             customer_name='',
-            customer_address='',
-            delivery_date=datetime.now().strftime('%Y-%m-%d'),
+            customer_address=InvoiceAddress.example(),
+            customer_tax_id='',
+            shipping_address=InvoiceAddress.example(),
+            purchase_order='',
+            invoice_id='',
+            invoice_date=datetime.now().strftime('%Y-%m-%d'),
             payable_by=datetime.now().strftime('%Y-%m-%d'),
-            products=[InvoiceProduct.example()],
-            returns=[InvoiceProduct.example()],
-            total_product_quantity=0.0,
-            total_product_price=0.0,
-            product_signatures=[
-                InvoiceSignature.example('Customer'),
-                InvoiceSignature.example('Driver')
-            ],
-            returns_signatures=[InvoiceSignature.example()]
+            vendor_name='',
+            vendor_address=InvoiceAddress.example(),
+            vendor_tax_id='',
+            remittance_address=InvoiceAddress.example(),
+            subtotal=0.0,
+            total_discount=0.0,
+            total_tax=0.0,
+            invoice_total=0.0,
+            payment_terms='',
+            items=[InvoiceItem.example()],
+            total_item_quantity=0.0,
+            items_customer_signature=InvoiceSignature.example(),
+            items_vendor_signature=InvoiceSignature.example(),
+            returns=[InvoiceItem.example()],
+            total_return_quantity=0.0,
+            returns_customer_signature=InvoiceSignature.example(),
+            returns_vendor_signature=InvoiceSignature.example()
         )
 
     @staticmethod
@@ -221,24 +349,51 @@ class Invoice(BaseModel):
 
         json_content = json.loads(json_str)
 
-        def create_invoice_product(product):
+        def create_invoice_address(address):
             """
-            Creates an InvoiceProduct object from a dictionary.
+            Creates an InvoiceAddress object from a dictionary.
 
             Args:
-                product: A dictionary representing an InvoiceProduct object.
+                address: A dictionary representing an InvoiceAddress object.
 
             Returns:
-                InvoiceProduct: An InvoiceProduct object.
+                InvoiceAddress: An InvoiceAddress object.
             """
 
-            return InvoiceProduct(
-                id=product.get('id', None),
-                description=product.get('description', None),
-                unit_price=product.get('unit_price', None),
-                quantity=product.get('quantity', None),
-                total=product.get('total', None),
-                reason=product.get('reason', None)
+            if address is None:
+                return None
+
+            return InvoiceAddress(
+                street=address.get('street', None),
+                city=address.get('city', None),
+                state=address.get('state', None),
+                postal_code=address.get('postal_code', None),
+                country=address.get('country', None)
+            )
+
+        def create_invoice_item(item):
+            """
+            Creates an InvoiceItem object from a dictionary.
+
+            Args:
+                product: A dictionary representing an InvoiceItem object.
+
+            Returns:
+                InvoiceItem: An InvoiceItem object.
+            """
+
+            if item is None:
+                return None
+
+            return InvoiceItem(
+                product_code=item.get('product_code', None),
+                description=item.get('description', None),
+                quantity=item.get('quantity', None),
+                tax=item.get('tax', None),
+                tax_rate=item.get('tax_rate', None),
+                unit_price=item.get('unit_price', None),
+                total=item.get('total', None),
+                reason=item.get('reason', None)
             )
 
         def create_invoice_signature(signature):
@@ -252,36 +407,54 @@ class Invoice(BaseModel):
                 InvoiceSignature: An InvoiceSignature object.
             """
 
+            if signature is None:
+                return None
+
             return InvoiceSignature(
-                type=signature.get('type', None),
-                name=signature.get('name', None),
+                signatory=signature.get('signatory', None),
                 is_signed=signature.get('is_signed', None)
             )
 
-        invoice_products = [create_invoice_product(
-            product) for product in json_content.get('products', [])]
-        invoice_returns = [create_invoice_product(
+        invoice_items = [create_invoice_item(
+            item) for item in json_content.get('items', [])]
+        invoice_returns = [create_invoice_item(
             return_product) for return_product in json_content.get('returns', [])]
-        invoice_product_signatures = [create_invoice_signature(
-            signature) for signature in json_content.get('product_signatures', [])]
-        invoice_return_signatures = [create_invoice_signature(
-            signature) for signature in json_content.get('returns_signatures', [])]
 
         return Invoice(
-            invoice_number=json_content.get('invoice_number', None),
-            purchase_order_number=json_content.get(
-                'purchase_order_number', None),
             customer_name=json_content.get('customer_name', None),
-            customer_address=json_content.get('customer_address', None),
-            delivery_date=json_content.get('delivery_date', None),
+            customer_address=create_invoice_address(
+                json_content.get('customer_address', None)),
+            customer_tax_id=json_content.get('customer_tax_id', None),
+            shipping_address=create_invoice_address(
+                json_content.get('shipping_address', None)),
+            purchase_order=json_content.get('purchase_order', None),
+            invoice_id=json_content.get('invoice_id', None),
+            invoice_date=json_content.get('invoice_date', None),
             payable_by=json_content.get('payable_by', None),
-            products=invoice_products,
+            vendor_name=json_content.get('vendor_name', None),
+            vendor_address=create_invoice_address(
+                json_content.get('vendor_address', None)),
+            vendor_tax_id=json_content.get('vendor_tax_id', None),
+            remittance_address=create_invoice_address(
+                json_content.get('remittance_address', None)),
+            subtotal=json_content.get('subtotal', None),
+            total_discount=json_content.get('total_discount', None),
+            total_tax=json_content.get('total_tax', None),
+            invoice_total=json_content.get('invoice_total', None),
+            payment_terms=json_content.get('payment_terms', None),
+            items=invoice_items,
+            total_item_quantity=json_content.get('total_item_quantity', None),
+            items_customer_signature=create_invoice_signature(
+                json_content.get('items_customer_signature', None)),
+            items_vendor_signature=create_invoice_signature(
+                json_content.get('items_vendor_signature', None)),
             returns=invoice_returns,
-            total_product_quantity=json_content.get(
-                'total_product_quantity', None),
-            total_product_price=json_content.get('total_product_price', None),
-            product_signatures=invoice_product_signatures,
-            returns_signatures=invoice_return_signatures
+            total_return_quantity=json_content.get(
+                'total_return_quantity', None),
+            returns_customer_signature=create_invoice_signature(
+                json_content.get('returns_customer_signature', None)),
+            returns_vendor_signature=create_invoice_signature(
+                json_content.get('returns_vendor_signature', None))
         )
 
     def to_dict(self):
@@ -295,249 +468,33 @@ class Invoice(BaseModel):
         def to_list(items, expected_type):
             return [item.to_dict() for item in items if isinstance(item, expected_type)]
 
-        products = to_list(self.products or [], InvoiceProduct)
-        returns = to_list(self.returns or [], InvoiceProduct)
-        product_signatures = to_list(
-            self.product_signatures or [], InvoiceSignature)
-        return_signatures = to_list(
-            self.returns_signatures or [], InvoiceSignature)
+        items = to_list(self.items or [], InvoiceItem)
+        returns = to_list(self.returns or [], InvoiceItem)
 
         return {
-            'invoice_number': self.invoice_number,
-            'purchase_order_number': self.purchase_order_number,
             'customer_name': self.customer_name,
-            'customer_address': self.customer_address,
-            'delivery_date': self.delivery_date,
+            'customer_address': self.customer_address.to_dict() if self.customer_address is not None else None,
+            'customer_tax_id': self.customer_tax_id,
+            'shipping_address': self.shipping_address.to_dict() if self.shipping_address is not None else None,
+            'purchase_order': self.purchase_order,
+            'invoice_id': self.invoice_id,
+            'invoice_date': self.invoice_date,
             'payable_by': self.payable_by,
-            'products': products,
+            'vendor_name': self.vendor_name,
+            'vendor_address': self.vendor_address.to_dict() if self.vendor_address is not None else None,
+            'vendor_tax_id': self.vendor_tax_id,
+            'remittance_address': self.remittance_address.to_dict() if self.remittance_address is not None else None,
+            'subtotal': self.subtotal,
+            'total_discount': self.total_discount,
+            'total_tax': self.total_tax,
+            'invoice_total': self.invoice_total,
+            'payment_terms': self.payment_terms,
+            'items': items,
+            'total_item_quantity': self.total_item_quantity,
+            'items_customer_signature': self.items_customer_signature.to_dict() if self.items_customer_signature is not None else None,
+            'items_vendor_signature': self.items_vendor_signature.to_dict() if self.items_vendor_signature is not None else None,
             'returns': returns,
-            'total_product_quantity': self.total_product_quantity,
-            'total_product_price': self.total_product_price,
-            'product_signatures': product_signatures,
-            'returns_signatures': return_signatures
+            'total_return_quantity': self.total_return_quantity,
+            'returns_customer_signature': self.returns_customer_signature.to_dict() if self.returns_customer_signature is not None else None,
+            'returns_vendor_signature': self.returns_vendor_signature.to_dict() if self.returns_vendor_signature is not None else None
         }
-
-
-class InvoiceEvaluator:
-    """
-    A class to evaluate the accuracy of an extracted invoice against its expected gold standard.
-
-    Attributes:
-        expected (Invoice): The expected invoice.
-    """
-
-    def __init__(self, expected: Invoice):
-        """
-        Initializes a new instance of the InvoiceEvaluator class.
-
-        Args:
-            expected: The expected invoice to compare against.
-        """
-
-        self.expected = expected
-
-    def evaluate(self, actual: Optional[Invoice]):
-        """
-        Evaluates the accuracy of the extracted invoice against the expected invoice by comparing their attributes.
-
-        Args:
-            actual: The extracted invoice to evaluate.
-
-        Returns:
-            dict: A dictionary containing the accuracy of the extracted invoice by attribute.
-        """
-
-        def compare_product(expected_product: InvoiceProduct, actual_product: Optional[InvoiceProduct]):
-            """
-            Compares the accuracy of an expected product against an actual product including the overall accuracy.
-
-            Args:
-                expected_product: The expected product.
-                actual_product: The actual product.
-
-            Returns:
-                dict: A dictionary containing the accuracy of the product by attribute.
-            """
-
-            product_accuracy = {
-                'id': 0,
-                'description': 0,
-                'unit_price': 0,
-                'quantity': 0,
-                'total': 0,
-                'reason': 0,
-                'overall': 0
-            }
-
-            if actual_product is None:
-                return product_accuracy
-
-            product_accuracy['id'] = 1 if (expected_product.id or '').lower() == (
-                actual_product.id or '').lower() else 0
-            product_accuracy['description'] = 1 if (expected_product.description or '').lower(
-            ) == (actual_product.description or '').lower() else 0
-            product_accuracy['unit_price'] = 1 if expected_product.unit_price == actual_product.unit_price else 0
-            product_accuracy['quantity'] = 1 if expected_product.quantity == actual_product.quantity else 0
-            product_accuracy['total'] = 1 if expected_product.total == actual_product.total else 0
-            product_accuracy['reason'] = 1 if (expected_product.reason or '').lower() == (
-                actual_product.reason or '').lower() else 0
-            product_accuracy['overall'] = (product_accuracy['id'] + product_accuracy['description'] + product_accuracy['unit_price'] +
-                                           product_accuracy['quantity'] + product_accuracy['total'] + product_accuracy['reason']) / 6
-
-            return product_accuracy
-
-        def compare_signature(expected_signature: InvoiceSignature, actual_signature: Optional[InvoiceSignature]):
-            """
-            Compares the accuracy of an expected signature against an actual signature including the overall accuracy.
-
-            Args:
-                expected_signature: The expected signature.
-                actual_signature: The actual signature.
-
-            Returns:
-                dict: A dictionary containing the accuracy of the signature by attribute
-            """
-
-            signature_accuracy = {
-                'type': 0,
-                'name': 0,
-                'is_signed': 0,
-                'overall': 0
-            }
-
-            if actual_signature is None:
-                return signature_accuracy
-
-            signature_accuracy['type'] = 1 if (expected_signature.type or '').lower() == (
-                actual_signature.type or '').lower() else 0
-            signature_accuracy['name'] = 1 if (expected_signature.name or '').lower() == (
-                actual_signature.name or '').lower() else 0
-            signature_accuracy['is_signed'] = 1 if expected_signature.is_signed == actual_signature.is_signed else 0
-            signature_accuracy['overall'] = (
-                signature_accuracy['type'] + signature_accuracy['name'] + signature_accuracy['is_signed']) / 3
-
-            return signature_accuracy
-
-        invoice_accuracy = {
-            'invoice_number': 0,
-            'purchase_order_number': 0,
-            'customer_name': 0,
-            'customer_address': 0,
-            'delivery_date': 0,
-            'payable_by': 0,
-            'products': [],
-            'products_overall': 0,
-            'returns': [],
-            'returns_overall': 0,
-            'total_product_quantity': 0,
-            'total_product_price': 0,
-            'product_signatures': [],
-            'product_signatures_overall': 0,
-            'returns_signatures': [],
-            'returns_signatures_overall': 0,
-            'overall': 0
-        }
-
-        if actual is None:
-            return invoice_accuracy
-
-        invoice_accuracy['invoice_number'] = 1 if (self.expected.invoice_number or '').lower(
-        ) == (actual.invoice_number or '').lower() else 0
-        invoice_accuracy['purchase_order_number'] = 1 if (self.expected.purchase_order_number or '').lower(
-        ) == (actual.purchase_order_number or '').lower() else 0
-        invoice_accuracy['customer_name'] = 1 if (self.expected.customer_name or '').lower(
-        ) == (actual.customer_name or '').lower() else 0
-        invoice_accuracy['customer_address'] = 1 if (self.expected.customer_address or '').lower(
-        ) == (actual.customer_address or '').lower() else 0
-        invoice_accuracy['delivery_date'] = 1 if self.expected.delivery_date == actual.delivery_date else 0
-        invoice_accuracy['payable_by'] = 1 if self.expected.payable_by == actual.payable_by else 0
-        invoice_accuracy['total_product_quantity'] = 1 if self.expected.total_product_quantity == actual.total_product_quantity else 0
-        invoice_accuracy['total_product_price'] = 1 if self.expected.total_product_price == actual.total_product_price else 0
-
-        if actual.products is None:
-            invoice_accuracy['products_overall'] = 1 if self.expected.products is None else 0
-        else:
-            if self.expected.products is None:
-                invoice_accuracy['products_overall'] = 0
-            else:
-                for actual_product in actual.products:
-                    expected_product = next(
-                        (product for product in self.expected.products if (product.id or '').lower() == (actual_product.id or '').lower()), None)
-                    if expected_product is not None:
-                        invoice_accuracy['products'].append(
-                            compare_product(expected_product, actual_product))
-                    else:
-                        invoice_accuracy['products'].append({'overall': 0})
-
-                num_products = len(invoice_accuracy['products']) if len(
-                    invoice_accuracy['products']) > 0 else 1
-                invoice_accuracy['products_overall'] = sum(
-                    [product['overall'] for product in invoice_accuracy['products']]) / num_products
-
-        if actual.returns is None:
-            invoice_accuracy['returns_overall'] = 1 if self.expected.returns is None else 0
-        else:
-            if self.expected.returns is None:
-                invoice_accuracy['returns_overall'] = 0
-            else:
-                for actual_return in actual.returns:
-                    expected_return = next(
-                        (return_product for return_product in self.expected.returns if (return_product.id or '').lower() == (actual_return.id or '').lower()), None)
-                    if expected_return is not None:
-                        invoice_accuracy['returns'].append(
-                            compare_product(expected_return, actual_return))
-                    else:
-                        invoice_accuracy['returns'].append({'overall': 0})
-
-                num_returns = len(invoice_accuracy['returns']) if len(
-                    invoice_accuracy['returns']) > 0 else 1
-                invoice_accuracy['returns_overall'] = sum(
-                    [return_product['overall'] for return_product in invoice_accuracy['returns']]) / num_returns
-
-        if actual.product_signatures is None:
-            invoice_accuracy['product_signatures_overall'] = 1 if self.expected.product_signatures is None else 0
-        else:
-            if self.expected.product_signatures is None:
-                invoice_accuracy['product_signatures_overall'] = 0
-            else:
-                for actual_product_signature in actual.product_signatures:
-                    expected_product_signature = next(
-                        (product_signature for product_signature in self.expected.product_signatures if (product_signature.type or '').lower() == (actual_product_signature.type or '').lower()), None)
-                    if expected_product_signature is not None:
-                        invoice_accuracy['product_signatures'].append(
-                            compare_signature(expected_product_signature, actual_product_signature))
-                    else:
-                        invoice_accuracy['product_signatures'].append(
-                            {'overall': 0})
-
-                num_product_signatures = len(invoice_accuracy['product_signatures']) if len(
-                    invoice_accuracy['product_signatures']) > 0 else 1
-                invoice_accuracy['product_signatures_overall'] = sum(
-                    [product_signature['overall'] for product_signature in invoice_accuracy['product_signatures']]) / num_product_signatures
-
-        if actual.returns_signatures is None:
-            invoice_accuracy['returns_signatures_overall'] = 1 if self.expected.returns_signatures is None else 0
-        else:
-            if self.expected.returns_signatures is None:
-                invoice_accuracy['returns_signatures_overall'] = 0
-            else:
-                for actual_return_signature in actual.returns_signatures:
-                    expected_return_signature = next(
-                        (return_signature for return_signature in self.expected.returns_signatures if (return_signature.type or '').lower() == (actual_return_signature.type or '').lower()), None)
-                    if expected_return_signature is not None:
-                        invoice_accuracy['returns_signatures'].append(
-                            compare_signature(expected_return_signature, actual_return_signature))
-                    else:
-                        invoice_accuracy['returns_signatures'].append(
-                            {'overall': 0})
-
-                num_return_signatures = len(invoice_accuracy['returns_signatures']) if len(
-                    invoice_accuracy['returns_signatures']) > 0 else 1
-                invoice_accuracy['returns_signatures_overall'] = sum(
-                    [return_signature['overall'] for return_signature in invoice_accuracy['returns_signatures']]) / num_return_signatures
-
-        invoice_accuracy['overall'] = (invoice_accuracy['invoice_number'] + invoice_accuracy['purchase_order_number'] + invoice_accuracy['customer_name'] + invoice_accuracy['customer_address'] +
-                                       invoice_accuracy['delivery_date'] + invoice_accuracy['payable_by'] + invoice_accuracy['total_product_quantity'] + invoice_accuracy['total_product_price'] +
-                                       invoice_accuracy['products_overall'] + invoice_accuracy['returns_overall'] + invoice_accuracy['product_signatures_overall'] + invoice_accuracy['returns_signatures_overall']) / 12
-
-        return invoice_accuracy

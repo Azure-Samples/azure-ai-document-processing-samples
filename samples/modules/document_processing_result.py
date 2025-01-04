@@ -1,7 +1,7 @@
 from __future__ import annotations
 import json
 from typing import Optional
-from modules.serialization import CustomEncoder
+from modules.utils import CustomEncoder
 
 
 class DataExtractionResult:

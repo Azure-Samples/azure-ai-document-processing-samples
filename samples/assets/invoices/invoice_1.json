@@ -1,0 +1,100 @@
+{
+    "fname": "invoice_1.pdf",
+    "expected": {
+        "customer_name": "Sharp Consulting",
+        "customer_address": {
+            "street": "73 Regal Way",
+            "city": "Leeds",
+            "state": null,
+            "postal_code": "LS1 5AB",
+            "country": "UK"
+        },
+        "customer_tax_id": null,
+        "shipping_address": null,
+        "purchase_order": "15931",
+        "invoice_id": "3847193",
+        "invoice_date": "2024-05-16",
+        "payable_by": "2024-05-24",
+        "vendor_name": "NEXGEN",
+        "vendor_address": null,
+        "vendor_tax_id": null,
+        "remittance_address": null,
+        "subtotal": 293.52,
+        "total_discount": null,
+        "total_tax": null,
+        "invoice_total": 293.52,
+        "payment_terms": null,
+        "items": [
+            {
+                "product_code": "MA197",
+                "description": "STRETCHWRAP ROLL",
+                "quantity": 5,
+                "tax": null,
+                "tax_rate": null,
+                "unit_price": 16.62,
+                "total": 83.1,
+                "reason": null
+            },
+            {
+                "product_code": "ST4086",
+                "description": "BALLPOINT PEN MED.",
+                "quantity": 10,
+                "tax": null,
+                "tax_rate": null,
+                "unit_price": 2.49,
+                "total": 24.9,
+                "reason": null
+            },
+            {
+                "product_code": "JF9912413BF",
+                "description": "BUBBLE FILM ROLL CL.",
+                "quantity": 12,
+                "tax": null,
+                "tax_rate": null,
+                "unit_price": 15.46,
+                "total": 185.52,
+                "reason": null
+            }
+        ],
+        "total_item_quantity": 27,
+        "items_customer_signature": {
+            "signatory": "Sarah H",
+            "is_signed": true
+        },
+        "items_vendor_signature": {
+            "signatory": "James T",
+            "is_signed": true
+        },
+        "returns": [
+            {
+                "product_code": "MA145",
+                "description": "POSTAL TUBE BROWN",
+                "quantity": 1,
+                "tax": null,
+                "tax_rate": null,
+                "unit_price": null,
+                "total": null,
+                "reason": "This item was provided in previous order as a replacement"
+            },
+            {
+                "product_code": "JF7902",
+                "description": "MAILBOX 25PK",
+                "quantity": 1,
+                "tax": null,
+                "tax_rate": null,
+                "unit_price": null,
+                "total": null,
+                "reason": "Not required"
+            }
+        ],
+        "total_return_quantity": 2,
+        "returns_customer_signature": {
+            "signatory": "Sarah H",
+            "is_signed": true
+        },
+        "returns_vendor_signature": {
+            "signatory": "James T",
+            "is_signed": true
+        }
+    }
+}

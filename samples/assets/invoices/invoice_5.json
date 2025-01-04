@@ -1,0 +1,50 @@
+{
+    "fname": "invoice_5.pdf",
+    "expected": {
+        "customer_name": "ALD AUTOMOTIVE PVT LTD",
+        "customer_address": null,
+        "customer_tax_id": "27AAFCA0924K1ZR",
+        "shipping_address": null,
+        "purchase_order": null,
+        "invoice_id": "GT\\5153",
+        "invoice_date": "2019-02-27",
+        "payable_by": null,
+        "vendor_name": "DILIP TYRES",
+        "vendor_address": {
+            "street": "Pushparaj Chowk",
+            "city": "Sangli",
+            "state": "Maharashtra",
+            "postal_code": null,
+            "country": null
+        },
+        "vendor_tax_id": "27AAEPH8682F1ZI",
+        "remittance_address": null,
+        "subtotal": 2287.50,
+        "total_discount": null,
+        "total_tax": 640.50,
+        "invoice_total": 2928.00,
+        "payment_terms": null,
+        "items": [
+            {
+                "product_code": "40111090",
+                "description": "165.80R/14 ASSURANCE DP T/L TYRES",
+                "quantity": 1,
+                "tax": 640.50,
+                "tax_rate": "14%",
+                "unit_price": 2287.50,
+                "total": 2928.00,
+                "reason": null
+            }
+        ],
+        "total_item_quantity": 1,
+        "items_customer_signature": null,
+        "items_vendor_signature": {
+            "signatory": null,
+            "is_signed": true
+        },
+        "returns": null,
+        "total_return_quantity": null,
+        "returns_customer_signature": null,
+        "returns_vendor_signature": null
+    }
+}

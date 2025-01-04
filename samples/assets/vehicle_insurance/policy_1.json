@@ -1,0 +1,43 @@
+{
+    "fname": "policy_1.pdf",
+    "expected": {
+        "policy_number": "GB20246717948",
+        "cost": {
+            "annual_total": 532.19,
+            "payable_by_date": "2024-06-13"
+        },
+        "renewal": {
+            "renewal_notification_date": "2025-05-12",
+            "last_date_to_renew": "2025-05-26"
+        },
+        "effective_from": "2024-06-03",
+        "effective_to": "2025-06-02",
+        "last_date_to_cancel": "2024-06-17",
+        "policyholder": {
+            "first_name": "Joe",
+            "last_name": "Bloggs",
+            "date_of_birth": "1990-01-05",
+            "address": "73 Regal Way, LEEDS, West Yorkshire, LS1 5AB",
+            "email_address": "Joe.Bloggs@me.com",
+            "total_years_of_residence_in_uk": 34,
+            "driving_license_number": "BLOGGS901050JJ1AB"
+        },
+        "vehicle": {
+            "registration_number": "VS24DMC",
+            "make": "Hyundai",
+            "model": "IONIQ 5 Premium 73 kWh RWD",
+            "year": 2024,
+            "value": 40000
+        },
+        "accident_excess": {
+            "compulsory": 250,
+            "voluntary": 250,
+            "unapproved_repair_penalty": 250
+        },
+        "fire_and_theft_excess": {
+            "compulsory": 250,
+            "voluntary": 250,
+            "unapproved_repair_penalty": 250
+        }
+    }
+}

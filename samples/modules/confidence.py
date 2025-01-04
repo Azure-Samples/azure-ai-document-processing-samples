@@ -43,7 +43,7 @@ def merge_confidence_values(confidence_a: dict, confidence_b: dict):
     def merge_field_confidence_value(
         field_a: any,
         field_b: any,
-        score_resolver: callable = max
+        score_resolver: callable = min
     ) -> dict:
         """
         Merges two field confidence values.
@@ -68,8 +68,11 @@ def merge_confidence_values(confidence_a: dict, confidence_b: dict):
                 for i in range(len(field_a))
             ]
         else:
+            valid_confidences = [conf for conf in [
+                field_a['confidence'], field_b['confidence']] if conf not in (None, 0)]
+
             return {
-                'confidence': score_resolver([field_a['confidence'], field_b['confidence']]),
+                'confidence': score_resolver(valid_confidences) if valid_confidences else 0.0,
                 'value': field_a['value'] if 'field' in field_a else None
             }
 

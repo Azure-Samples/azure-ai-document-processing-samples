@@ -3,13 +3,14 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class ClassificationBase(BaseModel):
+class Classification(BaseModel):
     """
     A class representing a classification of a page.
 
     Attributes:
         page_number: The page number of the classification.
         classification: The classification of the page.
+        similarity: The similarity of the classification from 0 to 100.
     """
 
     page_number: Optional[int] = Field(
@@ -18,50 +19,8 @@ class ClassificationBase(BaseModel):
     classification: Optional[str] = Field(
         description='The classification of the page.'
     )
-
-    @staticmethod
-    def example():
-        """
-        Returns an empty example ClassificationBase object with default values.
-
-        Returns:
-            ClassificationBase: An empty ClassificationBase object.
-        """
-
-        return ClassificationBase(
-            page_number=1,
-            classification=''
-        )
-
-    def to_dict(self):
-        """
-        Converts the ClassificationBase object to a dictionary.
-
-        Returns:
-            dict: The ClassificationBase object as a dictionary.
-        """
-
-        return {
-            'classification': self.classification
-        }
-
-
-class Classification(ClassificationBase):
-    """
-    A class representing a classification of a page with additional metadata.
-
-    Attributes:
-        page_number: The page number of the classification.
-        classification: The classification of the page.
-        similarity: The similarity of the classification from 0 to 100.
-        all_similarities: The similarities of all the classifications.
-    """
-
     similarity: Optional[float] = Field(
         description='The similarity of the classification from 0 to 100.'
-    )
-    all_similarities: Optional[list[dict[str, str]]] = Field(
-        description='The similarities of all the classifications.'
     )
 
     @staticmethod
@@ -76,8 +35,7 @@ class Classification(ClassificationBase):
         return Classification(
             page_number=1,
             classification='',
-            similarity=0,
-            all_similarities=[{'classification': '', 'similarity': 0}]
+            similarity=0
         )
 
     def to_dict(self):
@@ -88,7 +46,11 @@ class Classification(ClassificationBase):
             dict: The Classification object as a dictionary.
         """
 
-        return super().to_dict()
+        return {
+            'page_number': self.page_number,
+            'classification': self.classification,
+            'similarity': self.similarity
+        }
 
 
 class Classifications(BaseModel):
@@ -99,7 +61,7 @@ class Classifications(BaseModel):
         classifications: The list of Classification objects.
     """
 
-    classifications: list[ClassificationBase] = Field(
+    classifications: list[Classification] = Field(
         description='The list of Classification objects.'
     )
 
@@ -113,7 +75,7 @@ class Classifications(BaseModel):
         """
 
         return Classifications(
-            classifications=[ClassificationBase.example()]
+            classifications=[Classification.example()]
         )
 
     def get_classification(self, page_number: int):
@@ -124,7 +86,7 @@ class Classifications(BaseModel):
             page_number: The page number to get the classification for.
 
         Returns:
-            ClassificationBase: The classification for the specified page number.
+            Classification: The classification for the specified page number.
         """
 
         classification_dict = {c.page_number: c for c in self.classifications}
@@ -138,6 +100,11 @@ class Classifications(BaseModel):
             dict: The Classifications object as a dictionary.
         """
 
+        def to_list(items, expected_type):
+            return [item.to_dict() for item in items if isinstance(item, expected_type)]
+
+        classifications = to_list(self.classifications or [], Classification)
+
         return {
-            'classifications': [classification.to_dict() for classification in self.classifications]
+            'classifications': classifications
         }

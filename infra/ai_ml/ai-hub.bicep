@@ -39,7 +39,7 @@ param keyVaultId string
 @description('ID for the Application Insights associated with the AI Hub.')
 param applicationInsightsId string
 @description('ID for the Container Registry associated with the AI Hub.')
-param containerRegistryId string
+param containerRegistryId string?
 @description('ID for the Managed Identity associated with the AI Hub. Defaults to the system-assigned identity.')
 param identityId string?
 @description('Name for the AI Services resource to connect to.')

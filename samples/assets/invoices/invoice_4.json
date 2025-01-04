@@ -1,0 +1,63 @@
+{
+    "fname": "invoice_4.pdf",
+    "expected": {
+        "customer_name": "ALD AUTOMOTIVE PVT. LTD.",
+        "customer_address": {
+            "street": "110 Ashoka Palace Exhibition Road",
+            "city": "Patna",
+            "state": "Bihar",
+            "postal_code": "800001",
+            "country": null
+        },
+        "customer_tax_id": "10AAFCA0924K1Z6",
+        "shipping_address": null,
+        "purchase_order": "APPROVAL NO. 312611",
+        "invoice_id": "8928",
+        "invoice_date": "2019-02-16",
+        "payable_by": null,
+        "vendor_name": "AJIT SERVICES",
+        "vendor_address": {
+            "street": "Sudha Nav Niwas, East Boring Canal Road",
+            "city": "Patna",
+            "state": "Bihar",
+            "postal_code": "800001",
+            "country": null
+        },
+        "vendor_tax_id": "10AFBPJ2298D1ZO",
+        "remittance_address": null,
+        "subtotal": 1525.44,
+        "total_discount": 0.02,
+        "total_tax": 274.58,
+        "invoice_total": 1800.00,
+        "payment_terms": null,
+        "items": [
+            {
+                "product_code": null,
+                "description": "Alignment Charges",
+                "quantity": null,
+                "tax": 76.27,
+                "tax_rate": "18%",
+                "unit_price": null,
+                "total": 423.74,
+                "reason": null
+            },
+            {
+                "product_code": null,
+                "description": "Balancing (Weight Inclusiv)",
+                "quantity": null,
+                "tax": 198.31,
+                "tax_rate": "18%",
+                "unit_price": null,
+                "total": 1101.70,
+                "reason": null
+            }
+        ],
+        "total_item_quantity": null,
+        "items_customer_signature": null,
+        "items_vendor_signature": null,
+        "returns": null,
+        "total_return_quantity": null,
+        "returns_customer_signature": null,
+        "returns_vendor_signature": null
+    }
+}

@@ -1,26 +1,10 @@
-<#
-.SYNOPSIS
-    Deploys the infrastructure and applications required to run the solution.
-.PARAMETER DeploymentName
-	The name of the deployment.
-.PARAMETER Location
-    The location of the deployment.
-.PARAMETER SkipInfrastructure
-    Whether to skip the infrastructure deployment. Requires InfrastructureOutputs.json to exist in the infra directory.
-.EXAMPLE
-    .\Setup-Environment.ps1 -DeploymentName 'ai-document-data-extraction' -Location 'eastus' -SkipInfrastructure $false
-.NOTES
-    Author: James Croft
-#>
-
 param
 (
     [Parameter(Mandatory = $true)]
     [string]$DeploymentName,
     [Parameter(Mandatory = $true)]
     [string]$Location,
-    [Parameter(Mandatory = $true)]
-    [string]$SkipInfrastructure
+    [switch]$WhatIf
 )
 
 function Set-ConfigurationFileVariable($configurationFile, $variableName, $variableValue) {
@@ -36,19 +20,14 @@ function Set-ConfigurationFileVariable($configurationFile, $variableName, $varia
 
 Write-Host "Starting environment setup..."
 
-if ($SkipInfrastructure -eq '$false' -or -not (Test-Path -Path './infra/InfrastructureOutputs.json')) {
-    Write-Host "Deploying infrastructure..."
-    $InfrastructureOutputs = (./infra/Deploy-Infrastructure.ps1 `
-            -DeploymentName $DeploymentName `
-            -Location $Location)
-}
-else {
-    Write-Host "Skipping infrastructure deployment. Using existing outputs..."
-    $InfrastructureOutputs = Get-Content -Path './infra/InfrastructureOutputs.json' -Raw | ConvertFrom-Json
-}
+Write-Host "Deploying infrastructure..."
+$InfrastructureOutputs = (./infra/Deploy-Infrastructure.ps1 `
+        -DeploymentName $DeploymentName `
+        -Location $Location `
+        -WhatIf:$WhatIf)
 
 if (-not $InfrastructureOutputs) {
-    Write-Error "Infrastructure deployment outputs are not available. Exiting..."
+    Write-Error "Failed to deploy infrastructure."
     exit 1
 }
 

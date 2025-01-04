@@ -1,0 +1,89 @@
+{
+    "fname": "invoice_3.pdf",
+    "expected": {
+        "customer_name": "ALD AUTOMOTIVE P LTD.",
+        "customer_address": {
+            "street": "Workafella Business Centre 150/1, Infantry Road, Opp. Commissioner Office, Vasanth Nagar",
+            "city": "Bangalore",
+            "state": "Karnataka",
+            "postal_code": "560001",
+            "country": "India"
+        },
+        "customer_tax_id": "29AAFCA0924K1ZN",
+        "shipping_address": null,
+        "purchase_order": null,
+        "invoice_id": "IATIEN1819013536",
+        "invoice_date": "2019-02-15",
+        "payable_by": null,
+        "vendor_name": "ADISHAKTI CARS PVT. LTD.",
+        "vendor_address": null,
+        "vendor_tax_id": "29AAHCS6672E1ZZ",
+        "remittance_address": null,
+        "subtotal": 350.00,
+        "total_discount": null,
+        "total_tax": 63.00,
+        "invoice_total": 413.00,
+        "payment_terms": null,
+        "items": [
+            {
+                "product_code": "FREE2",
+                "description": "SECOND FREE SERVICE",
+                "quantity": 1,
+                "tax": 0,
+                "tax_rate": "9%",
+                "unit_price": 500.00,
+                "total": 0,
+                "reason": null
+            },
+            {
+                "product_code": "423030",
+                "description": "BRAKE BLEEDING",
+                "quantity": 1,
+                "tax": 0,
+                "tax_rate": "9%",
+                "unit_price": 0,
+                "total": 0,
+                "reason": null
+            },
+            {
+                "product_code": "183090",
+                "description": "BREATHER REPLACEMENT",
+                "quantity": 1,
+                "tax": 0,
+                "tax_rate": "9%",
+                "unit_price": 0,
+                "total": 0,
+                "reason": null
+            },
+            {
+                "product_code": "AKSPROPLUS",
+                "description": "SERVICE PLUS - AUTOKROM",
+                "quantity": 1,
+                "tax": 63.00,
+                "tax_rate": "9%",
+                "unit_price": 350.00,
+                "total": 413.00,
+                "reason": null
+            }
+        ],
+        "total_item_quantity": 4,
+        "items_customer_signature": {
+            "signatory": null,
+            "is_signed": false
+        },
+        "items_vendor_signature": {
+            "signatory": null,
+            "is_signed": true
+        },
+        "returns": null,
+        "total_return_quantity": null,
+        "returns_customer_signature": {
+            "signatory": null,
+            "is_signed": null
+        },
+        "returns_vendor_signature": {
+            "signatory": null,
+            "is_signed": null
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "fname": "policy_2.pdf",
+    "expected": {
+        "policy_number": "GB12345678901",
+        "cost": {
+            "annual_total": 600.00,
+            "payable_by_date": "2023-04-15"
+        },
+        "renewal": {
+            "renewal_notification_date": "2024-03-14",
+            "last_date_to_renew": "2024-03-28"
+        },
+        "effective_from": "2023-04-05",
+        "effective_to": "2024-04-04",
+        "last_date_to_cancel": "2023-04-19",
+        "policyholder": {
+            "first_name": "Sarah",
+            "last_name": "Thompson",
+            "date_of_birth": "1985-03-12",
+            "address": "12 High Street, London, SW1A 1AA",
+            "email_address": "s.thompson@me.com",
+            "total_years_of_residence_in_uk": 38,
+            "driving_license_number": "THOMPS851203FE5CC"
+        },
+        "vehicle": {
+            "registration_number": "AB12CDE",
+            "make": "Ford",
+            "model": "Focus 1.6L RWD",
+            "year": 2020,
+            "value": 12000
+        },
+        "accident_excess": {
+            "compulsory": 250,
+            "voluntary": 150,
+            "unapproved_repair_penalty": 250
+        },
+        "fire_and_theft_excess": {
+            "compulsory": 200,
+            "voluntary": 100,
+            "unapproved_repair_penalty": 250
+        }
+    }
+}
