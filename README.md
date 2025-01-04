@@ -15,7 +15,7 @@ description: This collection of samples demonstrates how to use various Azure AI
 
 This repository contains a collection of code samples that demonstrate how to use various Azure AI capabilities to process documents.
 
-The samples are intended to help engineering teams establish techniques with Azure AI Studio, Azure OpenAI, and Azure Document Intelligence to build solutions to extract structured data, classify, and analyze documents.
+The samples are intended to help engineering teams establish techniques with Azure AI Foundry, Azure OpenAI, and Azure Document Intelligence to build solutions to extract structured data, classify, and analyze documents.
 
 The techniques demonstrated take advance of various capabilities from each service to:
 
@@ -99,16 +99,16 @@ az login
 
 The script will deploy the following resources to your Azure subscription:
 
-- [**Azure AI Studio Hub & Project**](https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio), a development platform for building AI solutions that integrates with Azure AI Services in a secure manner using Microsoft Entra ID for authentication.
-  - **Note**: Phi-3.5 MoE will be deployed as a [PAYG serverless endpoint in the Azure AI Studio Project](https://ai.azure.com/explore/models/Phi-3.5-MoE-instruct/version/4/registry/azureml?tid=ffd04b18-2c0c-4078-82eb-4d8558089235) with its primary key stored in the associated Azure Key Vault.
+- [**Azure AI Foundry Hub & Project**](https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio), a development platform for building AI solutions that integrates with Azure AI Services in a secure manner using Microsoft Entra ID for authentication.
+  - **Note**: Phi-3.5 MoE will be deployed as a [PAYG serverless endpoint in the Azure AI Foundry Project](https://ai.azure.com/explore/models/Phi-3.5-MoE-instruct/version/4/registry/azureml?tid=ffd04b18-2c0c-4078-82eb-4d8558089235) with its primary key stored in the associated Azure Key Vault.
 - [**Azure AI Services**](https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services), a managed service for all Azure AI Services, including Azure OpenAI and Azure AI Document Intelligence.
   - **Note**: GPT-4o and GPT-4o-mini will be deployed as Global Standard models with 10K TPM quota allocation. `text-embedding-3-large` will be deployed as a Standard model with 115K TPM quota allocation. These can be adjusted based on your quota availability in the [main.bicep](./infra/main.bicep) file.
-- [**Azure Storage Account**](https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction), required by Azure AI Studio.
+- [**Azure Storage Account**](https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction), required by Azure AI Foundry.
 - [**Azure Monitor**](https://learn.microsoft.com/en-us/azure/azure-monitor/overview), used to store logs and traces for monitoring and troubleshooting purposes.
-- [**Azure Container Registry**](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro), used to store container images for the Azure AI Studio environment.
+- [**Azure Container Registry**](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-intro), used to store container images for the Azure AI Foundry environment.
 
 > [!NOTE]
-> All resources are secured by default with Microsoft Entra ID using Azure RBAC. Your user client ID will be added with the necessary least-privilege roles to access the resources created. A user-assigned managed identity will also be deployed for the Azure AI Studio environment.
+> All resources are secured by default with Microsoft Entra ID using Azure RBAC. Your user client ID will be added with the necessary least-privilege roles to access the resources created. A user-assigned managed identity will also be deployed for the Azure AI Foundry environment.
 
 After the script completes, you can run any of the samples in the repository by following their instructions.
 
