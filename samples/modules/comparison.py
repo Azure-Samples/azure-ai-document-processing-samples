@@ -46,23 +46,6 @@ def get_extraction_comparison(expected: dict, actual: dict, confidence: dict, ac
 
 
 def get_classification_comparison(expected: Classifications, extracted: Classifications, confidence: Optional[dict] = None):
-    """
-    Generate a markdown table comparing the extracted classifications with the expected classifications.
-    Matching values are highlighted in green, while non-matching values are highlighted in red.
-
-    Args:
-        expected: The expected classifications.
-        extracted: The extracted classifications.
-        similarities: The additional similarity data for the extracted classifications.
-
-    Returns:
-        str: The markdown table comparing the extracted classifications with the expected classifications.
-    """
-
-    def similarity_md_list(similarities: list[dict[str, str]]):
-        similarities.sort(key=lambda x: x['similarity'], reverse=True)
-        return "<ul>" + "".join([f"<li>{s['classification']} ({s['similarity']})</li>" for s in similarities]) + "</ul>"
-
     if confidence is not None:
         confidence_flat = flatten_dict(confidence)
 
@@ -79,8 +62,6 @@ def get_classification_comparison(expected: Classifications, extracted: Classifi
         # If extracted_classification is a Classification object, add extra metadata
         if hasattr(extracted_classification, 'similarity'):
             row["Similarity"] = extracted_classification.similarity
-            row["Matches"] = similarity_md_list(
-                extracted_classification.all_similarities)
 
         if confidence is not None:
             row["Confidence"] = confidence_flat.get(
