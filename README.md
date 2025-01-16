@@ -96,7 +96,7 @@ az login
 
 > [!NOTE]
 > If a specific Azure tenant is required, use the `--tenant <TenantId>` parameter in the `az login` command.
-> `az login --tenant <TenandId>`
+> `az login --tenant <TenantId>`
 
 > [!TIP]
 > If you want to preview the changes without deployment, you can add the `-WhatIf` parameter to the `Setup-Environment.ps1` script.
