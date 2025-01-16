@@ -91,11 +91,16 @@ Once the Dev Container is up and running, you can setup the necessary Azure serv
 ```pwsh
 az login
 
-./Setup-Environment.ps1 -DeploymentName <UniqueDeploymentName> -Location <AzureRegion> -SkipInfrastructure $false
+./Setup-Environment.ps1 -DeploymentName <UniqueDeploymentName> -Location <AzureRegion>
 ```
 
 > [!NOTE]
-> If a specific tenant is required, use the `--tenant <TenantId>` parameter in the `az login` command.
+> If a specific Azure tenant is required, use the `--tenant <TenantId>` parameter in the `az login` command.
+> `az login --tenant <TenandId>`
+
+> [!TIP]
+> If you want to preview the changes without deployment, you can add the `-WhatIf` parameter to the `Setup-Environment.ps1` script.
+> `./Setup-Environment.ps1 -DeploymentName <UniqueDeploymentName> -Location <AzureRegion> -WhatIf`
 
 The script will deploy the following resources to your Azure subscription:
 
