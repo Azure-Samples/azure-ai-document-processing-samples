@@ -8,14 +8,14 @@ products:
   - ai-services
   - azure-openai
 name: Document Processing with Azure AI Samples
-description: This collection of samples demonstrates how to use various Azure AI capabilities to build solution to extract structured data, classify, and analyze documents.
+description: This collection of samples demonstrates how to use various Azure AI capabilities to build solution to extract structured data, classify, redact, and analyze documents.
 ---
 
 # Document Processing with Azure AI Samples
 
 This repository contains a collection of code samples that demonstrate how to use various Azure AI capabilities to process documents.
 
-The samples are intended to help engineering teams establish techniques with Azure AI Foundry, Azure OpenAI, and Azure Document Intelligence to build solutions to extract structured data, classify, and analyze documents.
+The samples are intended to help engineering teams establish techniques with Azure AI Foundry, Azure OpenAI, Azure AI Document Intelligence, and Azure AI Language services to build solutions to extract structured data, classify, and analyze documents.
 
 The techniques demonstrated take advance of various capabilities from each service to:
 
@@ -46,6 +46,7 @@ The techniques demonstrated take advance of various capabilities from each servi
 | [Data Extraction - Comprehensive Azure AI Document Intelligence + Azure OpenAI GPT-4o with Vision](./samples/extraction/vision-based/comprehensive.ipynb) | Demonstrates how to improve the accuracy and confidence in extracting structured data from documents by combining Azure AI Document Intelligence and Azure OpenAI GPT-4o models with vision capabilities. | Any structured or unstructured document type.                                                                                         |
 | [Classification - Azure OpenAI GPT-4o with Vision](./samples/classification/openai.ipynb)                                                                 | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to classify documents using their built-in vision capabilities.                                                                        | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails.               |
 | [Classification - Azure AI Document Intelligence + Embeddings](./samples/classification/document-intelligence-embeddings.ipynb)                           | Demonstrates how to use Azure AI Document Intelligence pre-built layout and embeddings models to classify documents based on their content.                                                               | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails.               |
+| [Redaction - Azure AI Language PII Native Document Analysis](./samples/redaction/language-pii-redaction.ipynb)                                            | Demonstrates how to use Azure AI Language Native Document Analysis features to redact personally identifiable information (PII) from documents.                                                           | Redacting sensitive information from documents, such as names, addresses, and phone numbers.                                          |
 
 ## Getting Started
 
@@ -106,7 +107,7 @@ The script will deploy the following resources to your Azure subscription:
 
 - [**Azure AI Foundry Hub & Project**](https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio), a development platform for building AI solutions that integrates with Azure AI Services in a secure manner using Microsoft Entra ID for authentication.
   - **Note**: Phi-3.5 MoE will be deployed as a [PAYG serverless endpoint in the Azure AI Foundry Project](https://ai.azure.com/explore/models/Phi-3.5-MoE-instruct/version/4/registry/azureml?tid=ffd04b18-2c0c-4078-82eb-4d8558089235) with its primary key stored in the associated Azure Key Vault.
-- [**Azure AI Services**](https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services), a managed service for all Azure AI Services, including Azure OpenAI and Azure AI Document Intelligence.
+- [**Azure AI Services**](https://learn.microsoft.com/en-us/azure/ai-services/what-are-ai-services), a managed service for all Azure AI Services, including Azure OpenAI, Azure AI Document Intelligence, and Azure AI Language services.
   - **Note**: GPT-4o and GPT-4o-mini will be deployed as Global Standard models with 10K TPM quota allocation. `text-embedding-3-large` will be deployed as a Standard model with 115K TPM quota allocation. These can be adjusted based on your quota availability in the [main.bicep](./infra/main.bicep) file.
 - [**Azure Storage Account**](https://learn.microsoft.com/en-us/azure/storage/common/storage-introduction), required by Azure AI Foundry.
 - [**Azure Monitor**](https://learn.microsoft.com/en-us/azure/azure-monitor/overview), used to store logs and traces for monitoring and troubleshooting purposes.
