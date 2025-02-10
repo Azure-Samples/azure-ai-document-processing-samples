@@ -38,11 +38,12 @@ $KeyVaultName = $InfrastructureOutputs.keyVaultInfo.value.name
 $AIServicesEndpoint = $InfrastructureOutputs.aiModelsInfo.value.aiServicesEndpoint
 $OpenAIEndpoint = $InfrastructureOutputs.aiModelsInfo.value.openAIEndpoint
 $Gpt4oModelDeploymentName = $InfrastructureOutputs.aiModelsInfo.value.gpt4oModelDeploymentName
+$Gpt4oMiniModelDeploymentName = $InfrastructureOutputs.aiModelsInfo.value.gpt4oMiniModelDeploymentName
 $TextEmbeddingModelDeploymentName = $InfrastructureOutputs.aiModelsInfo.value.textEmbeddingModelDeploymentName
-$Phi3Endpoint = $InfrastructureOutputs.aiModelsInfo.value.phi3Endpoint
+$PhiEndpoint = $InfrastructureOutputs.aiModelsInfo.value.phiEndpoint
 
-$Phi3PrimaryKeySecretName = $InfrastructureOutputs.aiModelsInfo.value.phi3PrimaryKeySecretName
-$Phi3PrimaryKey = (az keyvault secret show --vault-name $KeyVaultName --name $Phi3PrimaryKeySecretName --query value -o tsv)
+$PhiPrimaryKeySecretName = $InfrastructureOutputs.aiModelsInfo.value.phiPrimaryKeySecretName
+$PhiPrimaryKey = (az keyvault secret show --vault-name $KeyVaultName --name $PhiPrimaryKeySecretName --query value -o tsv)
 
 Write-Host "Updating local settings..."
 
@@ -57,6 +58,7 @@ Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableNam
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'AI_SERVICES_ENDPOINT' -variableValue $AIServicesEndpoint
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'OPENAI_ENDPOINT' -variableValue $OpenAIEndpoint
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'GPT4O_MODEL_DEPLOYMENT_NAME' -variableValue $Gpt4oModelDeploymentName
+Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'GPT4O_MINI_MODEL_DEPLOYMENT_NAME' -variableValue $Gpt4oMiniModelDeploymentName
 Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'TEXT_EMBEDDING_MODEL_DEPLOYMENT_NAME' -variableValue $TextEmbeddingModelDeploymentName
-Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI3_ENDPOINT' -variableValue $Phi3Endpoint
-Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI3_PRIMARY_KEY' -variableValue $Phi3PrimaryKey
+Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI_ENDPOINT' -variableValue $PhiEndpoint
+Set-ConfigurationFileVariable -configurationFile $ConfigurationFile -variableName 'PHI_PRIMARY_KEY' -variableValue $PhiPrimaryKey
