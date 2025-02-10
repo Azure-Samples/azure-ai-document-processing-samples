@@ -17,7 +17,7 @@ This repository contains a collection of code samples that demonstrate how to us
 
 The samples are intended to help engineering teams establish techniques with Azure AI Foundry, Azure OpenAI, Azure AI Document Intelligence, and Azure AI Language services to build solutions to extract structured data, classify, and analyze documents.
 
-The techniques demonstrated take advance of various capabilities from each service to:
+The techniques demonstrated take advantage of various capabilities from each service to:
 
 - **Reduce complexity of custom model training** by taking advantage of the capabilities of Generative AI models to analyze and classify documents.
 - **Improve reliability in document processing** by utilizing combining AI service capbilities to extract structured data from any document type, with high accuracy and confidence.
