@@ -8,7 +8,7 @@ products:
   - ai-services
   - azure-openai
 name: Document Processing with Azure AI Samples
-description: This collection of samples demonstrates how to use various Azure AI capabilities to build solution to extract structured data, classify, redact, and analyze documents.
+description: This collection of samples demonstrates how to use various Azure AI capabilities to build a solution to extract structured data, classify, redact, and analyze documents.
 ---
 
 # Document Processing with Azure AI Samples
