@@ -359,7 +359,7 @@ module aiHub './ai_ml/ai-hub.bicep' = {
   }
 }
 
-var phiModelDeploymentName = 'phi-35-moe-${resourceToken}'
+var phiModelDeploymentName = 'phi-4-${resourceToken}'
 
 var aiHubProjectName = '${abbrs.ai.aiHubProject}${resourceToken}'
 module aiHubProject './ai_ml/ai-hub-project.bicep' = {
@@ -376,12 +376,12 @@ module aiHubProject './ai_ml/ai-hub-project.bicep' = {
       {
         name: phiModelDeploymentName
         model: {
-          name: 'Phi-35-moe-instruct'
+          name: 'Phi-4'
         }
         keyVaultConfig: {
           name: keyVault.outputs.name
-          primaryKeySecretName: 'Phi-35-MoE-PrimaryKey'
-          secondaryKeySecretName: 'Phi-35-MoE-SecondaryKey'
+          primaryKeySecretName: 'Phi-4-PrimaryKey'
+          secondaryKeySecretName: 'Phi-4-SecondaryKey'
         }
       }
     ]
@@ -420,6 +420,6 @@ output aiModelsInfo object = {
   gpt4oModelDeploymentName: gpt4oModelDeploymentName
   gpt4oMiniModelDeploymentName: gpt4oMiniModelDeploymentName
   textEmbeddingModelDeploymentName: textEmbeddingModelDeploymentName
-  phi3Endpoint: aiHubProject.outputs.serverlessModelDeployments[0].endpoint
-  phi3PrimaryKeySecretName: aiHubProject.outputs.serverlessModelDeployments[0].primaryKeySecretName
+  phiEndpoint: aiHubProject.outputs.serverlessModelDeployments[0].endpoint
+  phiPrimaryKeySecretName: aiHubProject.outputs.serverlessModelDeployments[0].primaryKeySecretName
 }

@@ -9,9 +9,10 @@ class AppSettings:
         ai_services_endpoint: The endpoint for the AI services.
         openai_endpoint: The endpoint for the OpenAI service.
         gpt4o_model_deployment_name: The name of the GPT-4o model deployment.
+        gpt4o_mini_model_deployment_name: The name of the GPT-4o Mini model deployment.
         text_embedding_model_deployment_name: The name of the text embedding model deployment.
-        phi3_endpoint: The endpoint for the Phi-3 deployment.
-        phi3_primary_key: The primary key for the Phi-3 deployment.
+        phi_endpoint: The endpoint for the Phi deployment.
+        phi_primary_key: The primary key for the Phi deployment.
     """
 
     def __init__(self, config: dict):
@@ -28,6 +29,7 @@ class AppSettings:
         self.ai_services_endpoint = config['AI_SERVICES_ENDPOINT']
         self.openai_endpoint = config['OPENAI_ENDPOINT']
         self.gpt4o_model_deployment_name = config['GPT4O_MODEL_DEPLOYMENT_NAME']
+        self.gpt4o_mini_model_deployment_name = config['GPT4O_MINI_MODEL_DEPLOYMENT_NAME']
         self.text_embedding_model_deployment_name = config['TEXT_EMBEDDING_MODEL_DEPLOYMENT_NAME']
-        self.phi3_endpoint = config['PHI3_ENDPOINT']
-        self.phi3_primary_key = config['PHI3_PRIMARY_KEY']
+        self.phi_endpoint = config['PHI_ENDPOINT']
+        self.phi_primary_key = config['PHI_PRIMARY_KEY']
