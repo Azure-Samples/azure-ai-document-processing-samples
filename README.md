@@ -13,6 +13,8 @@ description: This collection of samples demonstrates how to use various Azure AI
 
 # Document Processing with Azure AI Samples
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Azure-Samples/azure-ai-document-processing-samples?quickstart=1)
+
 This repository contains a collection of code samples that demonstrate how to use various Azure AI capabilities to process documents.
 
 The samples are intended to help engineering teams establish techniques with Azure AI Foundry, Azure OpenAI, Azure AI Document Intelligence, and Azure AI Language services to build solutions to extract structured data, classify, and analyze documents.
