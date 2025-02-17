@@ -1,0 +1,83 @@
+name: Bug Report 🐛
+description: Create a report to help us improve
+title: '[Bug]: '
+labels:
+  - bug
+  - triage
+assignees:
+  - jamesmcroft
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Please follow these steps first:
+  - type: markdown
+    attributes:
+      value: |
+        ## Troubleshooting
+        Please make reasonable efforts to troubleshoot and rule out issues with the setup or configuration of your local development environment and Azure resource deployment.
+        If you are not using the provided `devcontainer`, ensure that you have followed the necessary steps in the `README` to set up your local development environment.
+  - type: markdown
+    attributes:
+      value: |
+        > [!IMPORTANT]
+        > If insufficient information is provided via the following template, the issue might be closed without further consideration or investigation.
+
+        ---
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Please describe accurately how we can reproduce/verify the bug.
+      placeholder: |
+        Example steps (replace with your own):
+        1. Open the repo in GH Codespaces
+        2. Run the `document-intelligence-embeddings.ipynb` notebook
+        3. You should see the error `...`
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+      placeholder: I expected the notebook to run without any errors.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: A clear and concise description of what actually happened.
+      placeholder: The notebook failed to run with the error `...`
+    validations:
+      required: true
+  - type: checkboxes
+    id: envopts
+    attributes:
+      label: Environment
+      description: Please check the environment(s) where the issue occurs.
+      options:
+        - label: Local (No devcontainer)
+        - label: Local (devcontainer)
+        - label: GitHub Codespaces
+    validations:
+      required: true
+  - type: textarea
+    id: envinfo
+    attributes:
+      label: Environment Info
+      description: If using a local environment, please provide details about your local setup.
+      placeholder: |
+        - OS: Windows 10
+        - Python version: 3.8.5
+        - Docker version: 20.10.7
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might be relevant
+    validations:
+      required: false

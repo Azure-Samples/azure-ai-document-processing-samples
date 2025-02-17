@@ -1,0 +1,40 @@
+name: Feature Request 🚀
+description: Submit a proposal for a new feature or enhancement
+title: '[Feature]: '
+labels:
+  - enhancement
+  - triage
+assignees:
+  - jamesmcroft
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thank you for taking the time to suggest a new feature!
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: A clear and concise description of the feature you are proposing.
+      placeholder: |
+        I would like to see a new notebook that demonstrates how to use the `Azure.AI.TextAnalytics` client library to perform sentiment analysis on a collection of text documents.
+    validations:
+      required: true
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Use Case
+      description: Please describe the use case for this feature.
+      placeholder: |
+        This feature would be useful for data scientists who are looking to analyze the sentiment of customer reviews or social media posts.
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why do you believe this feature is important?
+      placeholder: |
+        There is currently limited examples of how to use the `Azure.AI.TextAnalytics` client library, and this feature would help to fill that gap.
+    validations:
+      required: true

@@ -1,5 +1,7 @@
-# Owners for this repo
+/.github/ @jamesmcroft
 
-* @jamesmcroft
+/.devcontainer/ @jamesmcroft
 
 /infra/* @jamesmcroft
+
+LICENSE @jamesmcroft
