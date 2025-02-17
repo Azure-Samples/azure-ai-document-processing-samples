@@ -4,8 +4,6 @@ title: '[Bug]: '
 labels:
   - bug
   - triage
-assignees:
-  - jamesmcroft
 body:
   - type: markdown
     attributes:
