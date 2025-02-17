@@ -4,8 +4,6 @@ title: '[Feature]: '
 labels:
   - enhancement
   - triage
-assignees:
-  - jamesmcroft
 body:
   - type: markdown
     attributes:
