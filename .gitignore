@@ -563,3 +563,4 @@ cython_debug/
 # Repo Specific
 *Outputs.json
 *.pdf.json
+*redacted*.pdf

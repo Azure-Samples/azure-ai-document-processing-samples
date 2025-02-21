@@ -88,6 +88,20 @@ class Stopwatch:
         self.is_running = False
         self.elapsed = time.perf_counter() - self.start_time
 
+    def get_current_elapsed(self):
+        """
+        Gets the current elapsed time without stopping the stopwatch.
+
+        Returns:
+            float: The current elapsed time in seconds.
+        """
+
+        if not self.is_running:
+            return self.elapsed
+
+        self.elapsed = time.perf_counter() - self.start_time
+        return self.elapsed
+
 
 def flatten_dict(data, parent_key='', sep='_'):
     """

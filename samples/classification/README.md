@@ -1,0 +1,8 @@
+# Classification Samples
+
+This folder contains samples that demonstrate how to classify documents using Azure AI services.
+
+| Sample                                                                                                   | Description                                                                                                                                 | Example Use Cases                                                                                                       |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| [Classification - Azure OpenAI GPT-4o with Vision](./openai.ipynb)                                       | Demonstrates how to use Azure OpenAI GPT-4o and GPT-4o-mini models to classify documents using their built-in vision capabilities.          | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
+| [Classification - Azure AI Document Intelligence + Embeddings](./document-intelligence-embeddings.ipynb) | Demonstrates how to use Azure AI Document Intelligence pre-built layout and embeddings models to classify documents based on their content. | Processing multiple documents types or documents with varying purposes, such as contracts, legal documents, and emails. |
