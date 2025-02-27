@@ -1,5 +1,6 @@
 {
   "serverless": {
+    "Phi-4-multimodal-instruct": "azureml://registries/azureml/models/Phi-4-multimodal-instruct",
     "Phi-4": "azureml://registries/azureml/models/Phi-4",
     "Phi-35-mini-instruct": "azureml://registries/azureml/models/Phi-3.5-mini-instruct",
     "Phi-35-moe-instruct": "azureml://registries/azureml/models/Phi-3.5-MoE-instruct",

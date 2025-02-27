@@ -359,7 +359,7 @@ module aiHub './ai_ml/ai-hub.bicep' = {
   }
 }
 
-var phiModelDeploymentName = 'phi-4-${resourceToken}'
+var phiModelDeploymentName = 'phi-4-multimodal-${resourceToken}'
 
 var aiHubProjectName = '${abbrs.ai.aiHubProject}${resourceToken}'
 module aiHubProject './ai_ml/ai-hub-project.bicep' = {
@@ -376,12 +376,12 @@ module aiHubProject './ai_ml/ai-hub-project.bicep' = {
       {
         name: phiModelDeploymentName
         model: {
-          name: 'Phi-4'
+          name: 'Phi-4-multimodal-instruct'
         }
         keyVaultConfig: {
           name: keyVault.outputs.name
-          primaryKeySecretName: 'Phi-4-PrimaryKey'
-          secondaryKeySecretName: 'Phi-4-SecondaryKey'
+          primaryKeySecretName: 'Phi-4-multimodal-PrimaryKey'
+          secondaryKeySecretName: 'Phi-4-multimodal-SecondaryKey'
         }
       }
     ]
