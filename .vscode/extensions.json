@@ -1,12 +1,23 @@
 {
     "recommendations": [
+        "GitHub.remotehub",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "github.vscode-pull-request-github",
+        "ms-vscode.vscode-node-azure-pack",
+        "ms-toolsai.jupyter",
+        "ms-azuretools.azure-dev",
+        "ms-azuretools.vscode-bicep",
+        "ms-vscode.powershell",
+        "ms-vscode-remote.vscode-remote-extensionpack",
+        "ms-azuretools.vscode-docker",
+        "ms-azuretools.vscode-azureresourcegroups",
+        "ms-azuretools.vscode-azurestorage",
+        "ms-azuretools.vscode-azure-github-copilot",
         "ms-python.vscode-pylance",
         "ms-python.python",
         "ms-python.debugpy",
-        "ms-toolsai.jupyter",
-        "ms-azuretools.vscode-bicep",
-        "ms-vscode.vscode-node-azure-pack",
-        "ms-vscode.powershell",
-        "GitHub.vscode-pull-request-github"
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.dotnet-interactive-vscode"
     ]
 }
