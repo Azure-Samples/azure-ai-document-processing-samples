@@ -66,5 +66,5 @@
             ]
         }
     },
-    "postCreateCommand": "pip3 --disable-pip-version-check install --user -r requirements.txt"
+    "postCreateCommand": ".devcontainer/post-create.sh"
 }
