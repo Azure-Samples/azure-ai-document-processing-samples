@@ -7,7 +7,7 @@ azure-identity~=1.20.0
 azure-storage-blob~=12.24.1
 ipycanvas~=0.13.3
 ipykernel~=6.29.5
-matplotlib~=3.10.0
+matplotlib~=3.10.1
 notebook~=7.3.2
 numpy
 openai~=1.64.0
