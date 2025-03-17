@@ -20,7 +20,7 @@ public class AppSettings
     /// <param name="config">A dictionary containing the configuration settings.</param>
     public AppSettings(Dictionary<string, string> config)
     {
-        if (config == null) throw new ArgumentNullException(nameof(config));
+        ArgumentNullException.ThrowIfNull(config);
 
         ResourceGroupName = config["RESOURCE_GROUP_NAME"];
         ManagedIdentityClientId = config["MANAGED_IDENTITY_CLIENT_ID"];
