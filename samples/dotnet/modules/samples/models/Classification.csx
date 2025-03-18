@@ -36,4 +36,6 @@ public class ClassificationDefinitionModel
     public string Description { get; set; }
 
     public List<string> Keywords { get; set; } = new();
+
+    public float[]? Embedding { get; set; }
 }
