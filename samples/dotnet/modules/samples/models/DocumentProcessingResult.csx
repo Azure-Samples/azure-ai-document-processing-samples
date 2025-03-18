@@ -6,5 +6,5 @@ public class DataClassificationResult<T>(T? classification, Dictionary<string, o
 
     public Dictionary<string, object>? Accuracy { get; } = accuracy;
 
-    public TimeSpan? ExecutionTime { get; }
+    public TimeSpan? ExecutionTime { get; } = executionTime;
 }
