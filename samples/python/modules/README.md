@@ -1,4 +1,4 @@
-# Document Processing with Azure AI Samples - Module
+# Document Processing with Azure AI Samples - Python Helpers
 
 This folder contains a collection of Python classes that are used by the Python samples. Their purpose is to provide reusable code and patterns for structured outputs as data transfer objects (DTOs), as well as evaluators for comparing the results of data extraction techniques.
 
