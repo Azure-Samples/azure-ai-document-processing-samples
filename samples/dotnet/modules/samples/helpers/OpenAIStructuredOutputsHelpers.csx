@@ -418,3 +418,8 @@ public static async Task<ParsedChatCompletion<T?>> CompleteChatAsync<T>(
 {
     return await chatClient.CompleteChatAsync(messages, options, cancellationToken);
 }
+
+public static string ModelJsonSchema(this Type t)
+{
+    return OpenAIJsonSchema.For(t);
+}
