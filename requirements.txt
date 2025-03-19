@@ -8,7 +8,7 @@ azure-storage-blob~=12.24.1
 ipycanvas~=0.13.3
 ipykernel~=6.29.5
 matplotlib~=3.10.1
-notebook~=7.3.2
+notebook~=7.3.3
 numpy
 openai~=1.64.0
 opencv-python~=4.11.0.86
