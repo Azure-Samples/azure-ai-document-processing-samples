@@ -76,8 +76,22 @@ public static Func<JsonSchemaExporterContext, JsonNode, JsonNode> StructuredOutp
 
     return node;
 
-    static void ProcessJsonObject(JsonObject jsonObject)
+    void ProcessJsonObject(JsonObject jsonObject)
     {
+        var attributeProvider = context.PropertyInfo is not null
+            ? context.PropertyInfo.AttributeProvider
+            : context.TypeInfo.Type;
+
+        var descriptionAttr = attributeProvider?
+            .GetCustomAttributes(inherit: true)
+            .Select(attr => attr as DescriptionAttribute)
+            .FirstOrDefault(attr => attr is not null);
+
+        if (descriptionAttr != null)
+        {
+            jsonObject.Insert(0, "description", descriptionAttr.Description);
+        }
+
         if (jsonObject["type"]?.ToString().Contains("object") != true)
         {
             return;
