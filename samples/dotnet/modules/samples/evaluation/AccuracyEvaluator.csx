@@ -219,7 +219,14 @@ public class AccuracyEvaluator<T>
                 totalComparisons++;
                 if (actual.ValueKind is not (JsonValueKind.Null or JsonValueKind.Undefined))
                 {
-                    return 0;
+                    if (actual.ValueKind is not JsonValueKind.String || !string.IsNullOrEmpty(actual.GetString()))
+                    {
+                        return 0;
+                    }
+
+                    // Assume that a null or empty string is valid.
+                    totalMatches++;
+                    return 1;
                 }
 
                 totalMatches++;
