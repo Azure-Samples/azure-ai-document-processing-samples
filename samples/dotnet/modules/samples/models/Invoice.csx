@@ -69,7 +69,7 @@ public class InvoiceItem
     public int? Quantity { get; set; }
 
     /// <summary>
-    /// Gets or stes the tax amount applied to the product.
+    /// Gets or sets the tax amount applied to the product.
     /// </summary>
     [Description("Tax amount applied to the line item, e.g. 6.99")]
     public float? Tax { get; set; }
