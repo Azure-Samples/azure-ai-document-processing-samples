@@ -30,6 +30,12 @@ The following VS Code extensions are included in the devcontainer:
 - **PowerShell** - PowerShell language support.
 - **GitHub Pull Requests** - GitHub pull request support.
 
+## Linux Dependencies
+
+The following Linux dependencies are included in the devcontainer:
+
+- **poppler-utils** - To manipulate PDF files using the `pdf2image` and `pdf2image-dotnet` libraries.
+
 ## Python Dependencies
 
 The following Python dependencies are included in the devcontainer:
@@ -37,6 +43,7 @@ The following Python dependencies are included in the devcontainer:
 - **azure-ai-documentintelligence** - To interact with the Azure AI Document Intelligence service.
 - **azure-core** - To interact with the Azure services.
 - **azure-identity** - To authenticate with the Azure services.
+- **azure-ai-inference** - To interact with open models (e.g. Microsoft Phi) deployed to Azure AI Foundry.
 - **azure-storage-blob** - To interact with the Azure Blob Storage service.
 - **ipycanvas** - To create interactive canvases in Jupyter notebooks.
 - **ipykernel** - To create Jupyter kernels.
@@ -54,3 +61,18 @@ The following Python dependencies are included in the devcontainer:
 - **seaborn** - To create plots in Jupyter notebooks.
 - **tabulate** - To create tables in Jupyter notebooks.
 - **tiktoken** - To calculate confidence scores for structured outputs using OpenAI's logprobs.
+
+## .NET Dependencies
+
+The following .NET dependencies are included in the samples:
+
+- **Azure.AI.DocumentIntelligence** - To interact with the Azure AI Document Intelligence service.
+- **Azure.AI.Inference** - To interact with open models (e.g. Microsoft Phi) deployed to Azure AI Foundry.
+- **Azure.AI.OpenAI** - To interact with the Azure OpenAI service.
+- **Azure.Identity** - To authenticate with the Azure services.
+- **Azure.Storage.Blobs** - To interact with the Azure Blob Storage service.
+- **DotNetEnv** - To load environment variables from a `.env` file.
+- **Microsoft.ML.Tokenizers** and **Microsoft.ML.Tokenizers.Data.O200kBase** - To calculate confidence scores for structured outputs using OpenAI's logprobs.
+- **pdf2image-dotnet** - To convert PDF files to images.
+- **SkiaSharp** and **SkiaSharp.NativeAssets.Linux** - To render and manipulate images.
+- **System.Numerics.Tensors** - To perform cosine similarity calculations for text vector embeddings.
