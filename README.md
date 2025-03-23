@@ -72,7 +72,7 @@ The techniques demonstrated take advantage of various capabilities from each ser
 
 ## Getting Started
 
-The sample repository comes with a [**Dev Container**](./.devcontainer/README.md) that contains all the necessary tools and dependencies to run the sample.
+The sample repository comes with a [**Dev Container**](./.devcontainer/README.md) that contains all the necessary tools and dependencies to run the sample. Please review the [**container and it's dependencies**](./.devcontainer/README.md) to understand all of the necessary components required to run these in a real-world environment, including the use of [Poppler](https://poppler.freedesktop.org/).
 
 > [!IMPORTANT]
 > An Azure subscription is required to run these samples. If you don't have an Azure subscription, create an [account](https://azure.microsoft.com/en-us/).
