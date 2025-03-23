@@ -5,30 +5,65 @@ This devcontainer provides a development environment for running the samples in 
 > [!NOTE]
 > If there are any issues with the devcontainer, please open an issue in the repository.
 
-## Tools
+## Base Image
 
-The following tools are included in the devcontainer:
+The devcontainer is based on the `mcr.microsoft.com/devcontainers/base:1-bookworm` image. Additional tools and dependencies are installed on top of this base image.
 
-- **Git** - Used for version control.
-- **PowerShell Core** - Used for running deployment scripts for the necessary infrastructure.
-- **Azure CLI** - Used to managed the Azure resources.
-- **Azure Developer CLI** - Used to manage the Azure resources.
-- **Python 3.12** - Used for Python samples.
-- **GitHub CLI** - Used to interact with the GitHub repository.
-- **Docker-in-Docker** - Used to run Docker containers from within the devcontainer.
+## Features
+
+The following container features are included in the devcontainer:
+
+- **Git** - To provide version control.
+- **PowerShell Core** - To run deployment scripts for the necessary infrastructure.
+- **Azure CLI** - To managed the Azure resources.
+- **Azure Developer CLI** - To manage the Azure resources.
+- **.NET 9.0 & .NET 8.0 SDKs** - To run .NET samples.
+- **Python 3.12** - To run Python samples.
+- **GitHub CLI** - To interact with the GitHub repository.
+- **Docker-in-Docker** - To run Docker containers from within the devcontainer.
 
 ## VS Code Extensions
 
 The following VS Code extensions are included in the devcontainer:
 
-- **Python** - Python language support.
-- **Pylance** - Python language server.
-- **Python Debugger** - Python debugging support.
-- **Jupyter** - Jupyter notebook support.
-- **Bicep** - Bicep language support.
-- **Azure Tools** - Azure resource management support.
-- **PowerShell** - PowerShell language support.
-- **GitHub Pull Requests** - GitHub pull request support.
+### General
+
+- **PowerShell** - To provide PowerShell language support.
+- **Remote Development** - To enable support for Windows Subsystem for Linux (WSL) and devcontainers.
+- **Prettier** - To format code.
+- **IntelliCode** - To provide AI-assisted IntelliSense.
+- **GitLens** - To improve Git repository information.
+- **EditorConfig** - To provide EditorConfig support.
+
+### GitHub
+
+- **GitHub Repositories** - To browse, search, edit, and commit to GitHub repositories.
+- **GitHub Copilot** - To provide AI-powered code completions and chat.
+- **GitHub Pull Requests** - To review and manage GitHub pull requests.
+- **GitHub Actions** - To manage GitHub actions.
+
+### Azure
+
+- **Azure Tools** - To provide Azure resource management support.
+- **Azure Developer CLI** - To make it easier to run and create Azure resources with the Azure Developer CLI.
+- **Bicep** - To provide Bicep language support.
+- **Docker** - To make it easier to run Docker containers.
+- **Azure Resources** - To view and manage Azure resources from within VS Code.
+- **Azure Storage** - To view and manage Azure Storage resources from within VS Code.
+- **GitHub Copilot for Azure** - To provide extensibility to GitHub Copilot to support with Azure related tasks.
+
+### .NET
+
+- **C# Dev Kit** - To provide C# language support.
+- **Polyglot Notebooks** - To provide support for .NET interactive notebooks.
+
+### Python
+
+- **Python** - To provide Python language support.
+- **Pylance** - To provide the default Python language server.
+- **autopep8** - To support formatting Python code.
+- **Python Debugger** - To debug Python code.
+- **Jupyter** - To enable Jupyter notebook support.
 
 ## Linux Dependencies
 
