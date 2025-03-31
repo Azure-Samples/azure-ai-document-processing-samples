@@ -1,4 +1,4 @@
-azure-ai-documentintelligence~=1.0.1
+azure-ai-documentintelligence~=1.0.2
 azure-ai-inference~=1.0.0b9
 azure-ai-textanalytics~=5.3.0
 azure-core~=1.32.0
