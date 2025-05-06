@@ -33,8 +33,8 @@ def get_extraction_comparison(expected: dict, actual: dict, confidence: dict, ac
             "Field": key,
             "Expected": expected_flat.get(key),
             "Extracted": extracted_flat.get(key),
-            "Confidence": f"{confidence_flat.get(f"{key}_confidence", 0.0) * 100:.2f}%",
-            "Accuracy": f"{'Match' if accuracy_flat.get(f"{key}", 0.0) == 1.0 else 'Mismatch'}"
+            "Confidence": f"{confidence_flat.get(f'{key}_confidence', 0.0) * 100:.2f}%",
+            "Accuracy": f"{'Match' if accuracy_flat.get(f'{key}', 0.0) == 1.0 else 'Mismatch'}"
         })
     df = pd.DataFrame(rows)
 
