@@ -564,6 +564,6 @@ cython_debug/
 *Outputs.json
 *.pdf.json
 *redacted*.pdf
-samples/python/demo/invoices/*
-!samples/python/demo/invoices/*.py
-!samples/python/demo/invoices/*.ipynb
+samples/python/scenarios/invoices/*
+!samples/python/scenarios/invoices/*.py
+!samples/python/scenarios/invoices/*.ipynb

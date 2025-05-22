@@ -1,70 +1,51 @@
 {
-    "fname": "invoice_2.pdf",
-    "expected": {
-        "customer_name": "White Triangle",
-        "customer_address": {
-            "street": "Unit 1, Fork Works",
-            "city": "Rotherham",
-            "state": null,
-            "postal_code": "S1 1RT",
-            "country": null
+  "fname": "invoice_2.pdf",
+  "0_expected": {
+    "customer_name": "White Triangle",
+    "customer_tax_id": null,
+    "customer_address": {
+      "street": "Unit 1, Fork Works",
+      "city": "Rotherham",
+      "state": null,
+      "postal_code": "S1 1RT",
+      "country": "UK"
+    },
+    "shipping_address": null,
+    "purchase_order": "17153",
+    "invoice_id": "4315272",
+    "invoice_date": "2024-12-06",
+    "due_date": null,
+    "vendor_name": "NEXGEN",
+    "vendor_address": null,
+    "vendor_tax_id": null,
+    "remittance_address": null,
+    "subtotal": {
+      "currency_code": "GBP",
+      "amount": 750.0
+    },
+    "total_discount": null,
+    "total_tax": null,
+    "invoice_total": {
+      "currency_code": "GBP",
+      "amount": 750.0
+    },
+    "payment_term": null,
+    "items": [
+      {
+        "product_code": "H509L",
+        "description": null,
+        "quantity": 150,
+        "tax": null,
+        "unit_price": {
+          "currency_code": "GBP",
+          "amount": 5.0
         },
-        "customer_tax_id": null,
-        "shipping_address": null,
-        "purchase_order": "17153",
-        "invoice_id": "4315272",
-        "invoice_date": "2024-12-06",
-        "payable_by": null,
-        "vendor_name": "NEXGEN",
-        "vendor_address": null,
-        "vendor_tax_id": null,
-        "remittance_address": null,
-        "subtotal": 750.00,
-        "total_discount": null,
-        "total_tax": null,
-        "invoice_total": 750.00,
-        "payment_terms": null,
-        "items": [
-            {
-                "product_code": "H509L",
-                "description": null,
-                "quantity": 150,
-                "tax": null,
-                "tax_rate": null,
-                "unit_price": 5.00,
-                "total": 750.00,
-                "reason": null
-            }
-        ],
-        "total_item_quantity": 150,
-        "items_customer_signature": {
-            "signatory": null,
-            "is_signed": false
-        },
-        "items_vendor_signature": {
-            "signatory": null,
-            "is_signed": false
-        },
-        "returns": [
-            {
-                "product_code": "H509M",
-                "description": null,
-                "quantity": 150,
-                "tax": null,
-                "tax_rate": null,
-                "unit_price": null,
-                "total": null,
-                "reason": "Incorrect size. Too small."
-            }
-        ],
-        "total_return_quantity": 150,
-        "returns_customer_signature": {
-            "signatory": null,
-            "is_signed": false
-        },
-        "returns_vendor_signature": {
-            "signatory": null,
-            "is_signed": false
+        "total": {
+          "currency_code": "GBP",
+          "amount": 750.0
         }
-    }
+      }
+    ],
+    "customer_signature": null
+  }
 }

@@ -1,0 +1,79 @@
+{
+  "fname": "invoice_6.pdf",
+  "0_expected": {
+    "customer_name": "AlphaTech Solutions",
+    "customer_tax_id": null,
+    "customer_address": {
+      "street": "22 Regent Street",
+      "city": "London",
+      "state": null,
+      "postal_code": "SWIY 4PD",
+      "country": "UK"
+    },
+    "shipping_address": {
+      "street": "Warehouse 5, Met Business Park",
+      "city": "Leicester",
+      "state": null,
+      "postal_code": "LE19 1WD",
+      "country": "UK"
+    },
+    "purchase_order": "PO-556423",
+    "invoice_id": "NG-INV-2025-00123",
+    "invoice_date": "2025-04-24",
+    "due_date": "2025-06-08",
+    "vendor_name": "NEXGEN",
+    "vendor_address": {
+      "street": "Unit 4, Innovation Drive",
+      "city": "Milton Keynes",
+      "state": "Buckinghamshire",
+      "postal_code": "MK9 1FH",
+      "country": "UK"
+    },
+    "vendor_tax_id": null,
+    "remittance_address": {
+      "street": "Unit 4, Innovation Drive",
+      "city": "Milton Keynes",
+      "state": "Buckinghamshire",
+      "postal_code": "MK9 1FH",
+      "country": null
+    },
+    "subtotal": {
+      "currency_code": "GBP",
+      "amount": 3787.7
+    },
+    "total_discount": null,
+    "total_tax": {
+      "currency_code": "GBP",
+      "amount": 568.16
+    },
+    "invoice_total": {
+      "currency_code": "GBP",
+      "amount": 4355.86
+    },
+    "payment_term": "Net45",
+    "items": [
+      {
+        "product_code": "10323",
+        "description": "MAILBOX 25PK",
+        "quantity": 245,
+        "tax": {
+          "currency_code": "GBP",
+          "amount": 568.16
+        },
+        "unit_price": {
+          "currency_code": "GBP",
+          "amount": 15.46
+        },
+        "total": {
+          "currency_code": "GBP",
+          "amount": 4355.86
+        }
+      }
+    ],
+    "customer_signature": {
+      "signatory": "Julia Patel",
+      "date": "2025-04-29",
+      "has_written_signature": true
+    }
+  }
+}
