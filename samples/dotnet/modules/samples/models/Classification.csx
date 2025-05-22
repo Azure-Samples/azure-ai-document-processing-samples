@@ -1,38 +1,41 @@
 using System.ComponentModel;
 
+/// <summary>
+/// A class representing a classification or a collection of page images from a document.
+/// </summary>
+[Description("A class representing a classification or a collection of page images from a document.")]
 public class ClassificationModel
 {
     /// <summary>
-    /// Gets or sets the page number of the classification.
-    /// </summary>
-    [Description("The page number of the classification.")]
-    public int? PageNumber { get; set; }
-
-    /// <summary>
     /// Gets or sets the classification of the page.
     /// </summary>
-    [Description("The classification of the page.")]
+    [Description("Classification of the page, e.g., invoice, receipt, etc.")]
     public string? Classification { get; set; }
 
     /// <summary>
-    /// Gets or sets the similarity of the classification from 0 to 100.
+    /// Gets or sets the start page number of the classification.
     /// </summary>
-    [Description("The similarity of the classification from 0 to 100.")]
-    public float? Similarity { get; set; }
+    [Description("If a single document associated with the classification spans multiple pages, this field specifies the start of the image range, e.g., 1.")]
+    public int? ImageRangeStart { get; set; }
+
+    /// <summary>
+    /// Gets or sets the end page number of the classification.
+    /// </summary>
+    [Description("If a single document associated with the classification spans multiple pages, this field specifies the end of the image range, e.g., 20.")]
+    public int? ImageRangeEnd { get; set; }
 }
 
+/// <summary>
+/// A class representing a list of document page image classifications.
+/// </summary>
+[Description("A class representing a list of document page image classifications.")]
 public class ClassificationsModel
 {
     /// <summary>
-    /// Gets or sets the list of classifications.
+    /// Gets or sets the list of document page image classifications.
     /// </summary>
-    [Description("The list of classifications.")]
+    [Description("List of document page image classifications.")]
     public List<ClassificationModel> Classifications { get; set; } = new();
-
-    public ClassificationModel GetClassification(int pageNumber)
-    {
-        return Classifications.FirstOrDefault(c => c.PageNumber == pageNumber);
-    }
 }
 
 public class ClassificationDefinitionModel

@@ -41,6 +41,6 @@ check_packages() {
 ###########################################
 
 # Install dependencies
-check_packages poppler-utils tesseract-ocr libtesseract-dev ffmpeg libsm6 libxext6 python3-opencv
+check_packages poppler-utils tesseract-ocr libtesseract-dev ffmpeg libsm6 libxext6 python3-opencv libfontconfig1 libice6 libsm6
 
 echo 'dev-tools script has completed!'

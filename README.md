@@ -35,6 +35,7 @@ The techniques demonstrated take advantage of various capabilities from each ser
   - [Document Classification](#document-classification)
   - [Document Redaction](#document-redaction)
   - [Document Extraction](#document-extraction)
+- [Use Case Scenarios](#use-case-scenarios)
 - [Getting Started](#getting-started)
   - [Setup on GitHub Codespaces](#setup-on-github-codespaces)
   - [Setup on Local](#setup-on-local)
@@ -69,6 +70,14 @@ The techniques demonstrated take advantage of various capabilities from each ser
 | Text-based Extraction with Azure AI Document Intelligence and Microsoft Phi                          | [Python](./samples/python/extraction/text/document-extraction-phi.ipynb) \| [.NET](./samples/dotnet/extraction/text/document-extraction-phi.ipynb)                                             | Use Azure AI Document Intelligence `prebuilt-layout` and Microsoft's Phi models to extract structured data from documents using text.  | Predominantly text-based documents such as invoices, receipts, and forms.                                                             |
 | Vision-based Extraction with Azure OpenAI GPT-4o GPT-4o                                              | [Python](./samples/python/extraction/vision/document-extraction-gpt-vision.ipynb) \| [.NET](./samples/dotnet/extraction/vision/document-extraction-gpt-vision.ipynb)                           | Use Azure OpenAI GPT-4o models to extract structured data from documents using vision capabilities.                                    | Complex documents with a mix of text and images, including diagrams, signatures, selection marks, etc. such as reports and contracts. |
 | Multi-Modal (Text and Vision) Extraction with Azure AI Document Intelligence and Azure OpenAI GPT-4o | [Python](./samples/python/extraction/multimodal/document-extraction-gpt-text-and-vision.ipynb) \| [.NET](./samples/dotnet/extraction/multimodal/document-extraction-gpt-text-and-vision.ipynb) | Improve the accuracy and confidence in extracting structured data from documents by combining text and images with LLMs.               | Any structured or unstructured document type.                                                                                         |
+
+## Use Case Scenarios
+
+This repo also contains a collection of end-to-end use case scenarios that demonstrate how to combine the various samples to create a real-world scenario for document processing.
+
+| Scenario    | Link                                                                                                                                           | Description                                                                                                                                                                                                                                                                                                   |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Invoice** | [Python](./samples/python/scenarios/invoices/invoice-extraction.ipynb) \| [.NET](./samples/dotnet/scenarios/invoices/invoice-extraction.ipynb) | Using a structured Invoice object ([Python](./samples/python/modules/samples/models/invoice.py) \| [.NET](./samples/dotnet/modules/samples/models/Invoice.csx)), invoice documents can be extracted into a standard Invoice schema by first classifying which pages to extract from using boundary detection. |
 
 ## Getting Started
 
