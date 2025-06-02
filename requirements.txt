@@ -10,7 +10,7 @@ ipykernel~=6.29.5
 matplotlib~=3.10.3
 notebook~=7.4.2
 numpy
-openai~=1.81.0
+openai~=1.82.1
 opencv-python~=4.11.0.86
 openpyxl~=3.1.5
 pandas~=2.2.3
