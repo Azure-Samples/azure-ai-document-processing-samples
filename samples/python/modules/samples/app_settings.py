@@ -6,11 +6,11 @@ class AppSettings:
         azure_resource_group: The name of the resource group.
         azure_storage_account_name: The name of the storage account.
         azure_ai_services_endpoint: The endpoint for the AI services.
-        azure_openai_endpoint: The endpoint for the OpenAI service.
-        azure_openai_chat_deployment: The name of the GPT-4o model deployment.
-        azure_openai_text_embedding_deployment: The name of the text embedding model deployment.
-        azure_ai_phi_endpoint: The endpoint for the Phi deployment.
-        azure_ai_phi_primary_key: The primary key for the Phi deployment.
+        azure_openai_endpoint: The endpoint for the Azure OpenAI service.
+        azure_openai_chat_deployment: The name of the Azure OpenAI chat model deployment.
+        azure_openai_text_embedding_deployment: The name of the Azure OpenAI text embedding model deployment.
+        azure_ai_phi_endpoint: The endpoint for the Azure AI Foundry Phi deployment.
+        azure_ai_phi_primary_key: The primary key for the Azure AI Foundry Phi deployment.
     """
 
     def __init__(self, config: dict):
