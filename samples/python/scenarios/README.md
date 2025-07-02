@@ -4,6 +4,7 @@ This folder contains a collection of end-to-end use case scenarios that demonstr
 
 ## Scenarios
 
-| Document Type                                      | Description                                                                                                                                                                                                             |
-| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**Invoice**](./invoices/invoice-extraction.ipynb) | Using a [structured Invoice object](../modules/samples/models/invoice.py), invoice documents can be extracted into a standard Invoice schema by first classifying which pages to extract from using boundary detection. |
+| Document Type                                            | Description                                                                                                                                                                                                                                     |
+| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**Invoice**](./invoices/invoice-extraction.ipynb)       | Using a [structured Invoice object](../modules/samples/models/invoice.py), invoice documents can be extracted into a standard Invoice schema by first classifying which pages to extract from using boundary detection.                         |
+| [**US Tax 1040**](./us_tax/us-tax-1040-extraction.ipynb) | Using Azure AI Document Intelligence prebuilt-tax.us.1040 models, US Tax 1040 documents can be extracted into a standard schema for each form type by first classifying which pages to extract from using boundary detection with Azure OpenAI. |

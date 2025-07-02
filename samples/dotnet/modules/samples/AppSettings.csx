@@ -3,16 +3,15 @@
 /// </summary>
 public class AppSettings
 {
-    public string ResourceGroupName { get; private set; }
-    public string ManagedIdentityClientId { get; private set; }
-    public string StorageAccountName { get; private set; }
-    public string AIServicesEndpoint { get; private set; }
-    public string OpenAIEndpoint { get; private set; }
-    public string GPT4OModelDeploymentName { get; private set; }
-    public string GPT4OMiniModelDeploymentName { get; private set; }
-    public string TextEmbeddingModelDeploymentName { get; private set; }
-    public string PhiEndpoint { get; private set; }
-    public string PhiPrimaryKey { get; private set; }
+    public string AzureResourceGroup { get; private set; }
+    public string AzureStorageAccountName { get; private set; }
+    public string AzureAIServicesEndpoint { get; private set; }
+    public string AzureOpenAIEndpoint { get; private set; }
+    public string AzureOpenAIChatDeployment { get; private set; }
+    public string AzureOpenAITextEmbeddingDeployment { get; private set; }
+    public string AzureOpenAIApiVersion { get; private set; }
+    public string AzureAIPhiEndpoint { get; private set; }
+    public string AzureAIPhiPrimaryKey { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the AppSettings class using the provided configuration.
@@ -22,15 +21,14 @@ public class AppSettings
     {
         ArgumentNullException.ThrowIfNull(config);
 
-        ResourceGroupName = config["RESOURCE_GROUP_NAME"];
-        ManagedIdentityClientId = config["MANAGED_IDENTITY_CLIENT_ID"];
-        StorageAccountName = config["STORAGE_ACCOUNT_NAME"];
-        AIServicesEndpoint = config["AI_SERVICES_ENDPOINT"];
-        OpenAIEndpoint = config["OPENAI_ENDPOINT"];
-        GPT4OModelDeploymentName = config["GPT4O_MODEL_DEPLOYMENT_NAME"];
-        GPT4OMiniModelDeploymentName = config["GPT4O_MINI_MODEL_DEPLOYMENT_NAME"];
-        TextEmbeddingModelDeploymentName = config["TEXT_EMBEDDING_MODEL_DEPLOYMENT_NAME"];
-        PhiEndpoint = config["PHI_ENDPOINT"];
-        PhiPrimaryKey = config["PHI_PRIMARY_KEY"];
+        AzureResourceGroup = config["AZURE_RESOURCE_GROUP"];
+        AzureStorageAccountName = config["AZURE_STORAGE_ACCOUNT_NAME"];
+        AzureAIServicesEndpoint = config["AZURE_AI_SERVICES_ENDPOINT"];
+        AzureOpenAIEndpoint = config["AZURE_OPENAI_ENDPOINT"];
+        AzureOpenAIChatDeployment = config["AZURE_OPENAI_CHAT_DEPLOYMENT"];
+        AzureOpenAITextEmbeddingDeployment = config["AZURE_OPENAI_TEXT_EMBEDDING_DEPLOYMENT"];
+        AzureOpenAIApiVersion = config["AZURE_OPENAI_API_VERSION"];
+        AzureAIPhiEndpoint = config["AZURE_AI_PHI_ENDPOINT"];
+        AzureAIPhiPrimaryKey = config["AZURE_AI_PHI_PRIMARY_KEY"];
     }
 }

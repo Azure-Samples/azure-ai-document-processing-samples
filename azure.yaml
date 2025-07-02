@@ -1,0 +1,11 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+
+name: azure-ai-document-processing-samples
+metadata:
+    template: azd-init@1.13.2
+resourceGroup: ${AZURE_RESOURCE_GROUP_NAME}
+hooks:
+  preprovision:
+    posix:
+      shell: sh
+      run: bash ./infra/scripts/deploy.sh $AZURE_ENV_NAME $AZURE_RESOURCE_GROUP_NAME $AZURE_LOCATION
