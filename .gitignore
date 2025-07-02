@@ -567,3 +567,6 @@ cython_debug/
 samples/**/scenarios/invoices/*
 !samples/**/scenarios/invoices/*.py
 !samples/**/scenarios/invoices/*.ipynb
+samples/**/scenarios/us_tax/*
+!samples/**/scenarios/us_tax/*.py
+!samples/**/scenarios/us_tax/*.ipynb
